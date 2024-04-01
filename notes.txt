@@ -1,0 +1,13 @@
+
+Milestone 2:
+- watch out: you could jump above the screen and segfault
+
+Milestone 3:
+- health + score?
+- fail condition
+- win condition
+
+Milestone 4:
+- moving objects
+- shoot enemies
+- double jump

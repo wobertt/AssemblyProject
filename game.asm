@@ -9,14 +9,15 @@
 #
 .text
 
-.eqv RED $s0
-li RED 0xff0000
+    # Define constants
+    .eqv RED $s0
+    li RED 0xff0000
 
-.eqv BASE_ADR $s6
-li BASE_ADR 0x10008000
+    .eqv BASE_ADR $s6
+    li BASE_ADR 0x10008000
 
-.eqv KEY $s7
-li KEY 0xffff0000
+    .eqv KEY $s7
+    li KEY 0xffff0000
 
 
 # Sleep for %d milliseconds.
@@ -42,7 +43,7 @@ main:
     
 _while:
     colour RED, $t0
-    # sleep 1000
+    sleep 1000
     addi $t0, $t0, 4
     j _while
 
