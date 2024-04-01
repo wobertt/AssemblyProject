@@ -10,7 +10,7 @@
 .text
 
 .eqv RED $s0
-li RED 0x00ff0000
+li RED 0xff0000
 
 .eqv BASE_ADR $s6
 li BASE_ADR 0x10008000
@@ -33,16 +33,17 @@ li KEY 0xffff0000
 # Modifies $t9.
 .macro colour (%col, %s)
     add $t9, BASE_ADR, %s
-    lw %col 0($t9)
+    sw %col 0($t9)
 .end_macro
 
 .globl main
 main:
     li $t0, 0
+    
 _while:
     colour RED, $t0
-    sleep 1000
-    addi $t0, $t0, 1
+    # sleep 1000
+    addi $t0, $t0, 4
     j _while
 
 
