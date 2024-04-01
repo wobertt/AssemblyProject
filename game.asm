@@ -53,6 +53,13 @@
     li KEY_ADR 0xffff0000
 
 
+# Numeric constants
+    .eqv MIN_PLAYER_X 0
+    .eqv MIN_PLAYER_Y 0
+    .eqv MAX_PLAYER_X 224
+    .eqv MAX_PLAYER_Y 224
+
+
 # --------------------- MACROS --------------------- #
 # I'm treating these as custom pseudoinstructions!
 
@@ -110,7 +117,7 @@ _while:
     jal check_movement
     jal draw_player
     
-    sleep 100
+    sleep 40
 
     j _while
 
@@ -132,7 +139,6 @@ draw_player:
     move $t1, PLAYER_Y
     sll $t1, $t1, 6
     add $t1, $t1, PLAYER_X
-    sll $t1, $t1, 2
     add $t1, $t1, BASE_ADR
 
     draw_player_pixels:
@@ -273,19 +279,23 @@ check_movement:
     get_keypress $t0
 
     move_player_up: bne $t0, 119, move_player_left
-        addi PLAYER_Y, PLAYER_Y, -1
+        beq PLAYER_Y, MIN_PLAYER_Y, move_player_none
+        addi PLAYER_Y, PLAYER_Y, -4
         jr $ra
 
     move_player_left: bne $t0, 97, move_player_down 
-        addi PLAYER_X, PLAYER_X, -1
+        beq PLAYER_X, MIN_PLAYER_X, move_player_none
+        addi PLAYER_X, PLAYER_X, -4
         jr $ra
 
     move_player_down: bne $t0, 115, move_player_right
-        addi PLAYER_Y, PLAYER_Y, 1
+        beq PLAYER_Y, MAX_PLAYER_Y, move_player_none
+        addi PLAYER_Y, PLAYER_Y, 4
         jr $ra
 
     move_player_right: bne $t0, 100, move_player_none
-        addi PLAYER_X, PLAYER_X, 1
+        beq PLAYER_X, MAX_PLAYER_Y, move_player_none
+        addi PLAYER_X, PLAYER_X, 4
 
     move_player_none:
         jr $ra
