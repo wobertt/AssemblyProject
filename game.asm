@@ -271,23 +271,19 @@ draw_player:
 check_movement:
     get_keypress $t0
 
-    bne $t0, 119, move_player_left
-    move_player_up:
+    move_player_up: bne $t0, 119, move_player_left
         addi PLAYER_Y, PLAYER_Y, -1
         jr $ra
 
-    bne $t0, 97, move_player_down 
-    move_player_left:
+    move_player_left: bne $t0, 97, move_player_down 
         addi PLAYER_X, PLAYER_X, -1
         jr $ra
 
-    bne $t0, 115, move_player_right
-    move_player_down:
+    move_player_down: bne $t0, 115, move_player_right
         addi PLAYER_Y, PLAYER_Y, 1
         jr $ra
 
-    bne $t0, 100, move_player_none
-    move_player_right:
+    move_player_right: bne $t0, 100, move_player_none
         addi PLAYER_X, PLAYER_X, 1
 
     move_player_none:
