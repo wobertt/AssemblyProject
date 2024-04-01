@@ -8,9 +8,9 @@ from PIL import Image
 # CONSTANTS
 FILENAME = 'slime.png'                  # Filename; overwritten if a command line argument is passed
 COLOUR_REG = r'$t0'                     # Register used to store colours; will be overwritten
-ADDRESS_REG = r'PLAYER_LOCATION'        # Register containing the address of the top left location to draw
-LEFT_PADDING = '\t'                     # String prepended to every instruction
-VERBOSE = True                          # Output extra information (filename, width and height)
+ADDRESS_REG = r'$t1'                    # Register containing the address of the top left location to draw
+LEFT_PADDING = '\t\t'                     # String prepended to every instruction
+VERBOSE = False                         # Output extra information (filename, width and height)
 
 
 # Read first command-line arg
@@ -36,7 +36,7 @@ for i in range(height):
         offset = i * width + j
         
         load_col_instruction = f'li {COLOUR_REG}, {hex(r << 16 | g << 8 | b)}'
-        draw_pixel_instruction = f'sw {COLOUR_REG}, {offset}({ADDRESS_REG})'
+        draw_pixel_instruction = f'sw {COLOUR_REG}, {4*offset}({ADDRESS_REG})'
 
         print(LEFT_PADDING + load_col_instruction)
         print(LEFT_PADDING + draw_pixel_instruction)

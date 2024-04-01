@@ -11,3 +11,14 @@ Milestone 4:
 - moving objects
 - shoot enemies
 - double jump
+
+Smooth graphics and consistent framerate:
+https://play.library.utoronto.ca/watch/d963232a065b1c3a433bcde7962c8a79
+https://gist.github.com/benchislett/49c6d00cf67ec3e8d9a75198d673d46e
+Order of events:
+1. game logic
+2. draw
+3. clear
+
+
+1. add "to clear" pixels to stack
