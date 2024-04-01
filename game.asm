@@ -136,7 +136,7 @@ draw_player:
     add $t1, $t1, BASE_ADR
 
     draw_player_pixels:
-        li $t0, 0x22b14c
+		li $t0, 0x22b14c
 		sw $t0, 0($t1)
 		li $t0, 0x22b14c
 		sw $t0, 4($t1)
@@ -153,117 +153,118 @@ draw_player:
 		li $t0, 0x22b14c
 		sw $t0, 28($t1)
 		li $t0, 0x22b14c
-		sw $t0, 32($t1)
+		sw $t0, 256($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 36($t1)
+		sw $t0, 260($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 40($t1)
+		sw $t0, 264($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 44($t1)
+		sw $t0, 268($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 48($t1)
+		sw $t0, 272($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 52($t1)
+		sw $t0, 276($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 56($t1)
+		sw $t0, 280($t1)
 		li $t0, 0x22b14c
-		sw $t0, 60($t1)
+		sw $t0, 284($t1)
 		li $t0, 0x22b14c
-		sw $t0, 64($t1)
+		sw $t0, 512($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 68($t1)
+		sw $t0, 516($t1)
 		li $t0, 0xa8e61d
-		sw $t0, 72($t1)
+		sw $t0, 520($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 76($t1)
+		sw $t0, 524($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 80($t1)
+		sw $t0, 528($t1)
 		li $t0, 0xa8e61d
-		sw $t0, 84($t1)
+		sw $t0, 532($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 88($t1)
+		sw $t0, 536($t1)
 		li $t0, 0x22b14c
-		sw $t0, 92($t1)
+		sw $t0, 540($t1)
 		li $t0, 0x22b14c
-		sw $t0, 96($t1)
+		sw $t0, 768($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 100($t1)
+		sw $t0, 772($t1)
 		li $t0, 0xa8e61d
-		sw $t0, 104($t1)
+		sw $t0, 776($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 108($t1)
+		sw $t0, 780($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 112($t1)
+		sw $t0, 784($t1)
 		li $t0, 0xa8e61d
-		sw $t0, 116($t1)
+		sw $t0, 788($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 120($t1)
+		sw $t0, 792($t1)
 		li $t0, 0x22b14c
-		sw $t0, 124($t1)
+		sw $t0, 796($t1)
 		li $t0, 0x22b14c
-		sw $t0, 128($t1)
+		sw $t0, 1024($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 132($t1)
+		sw $t0, 1028($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 136($t1)
+		sw $t0, 1032($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 140($t1)
+		sw $t0, 1036($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 144($t1)
+		sw $t0, 1040($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 148($t1)
+		sw $t0, 1044($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 152($t1)
+		sw $t0, 1048($t1)
 		li $t0, 0x22b14c
-		sw $t0, 156($t1)
+		sw $t0, 1052($t1)
 		li $t0, 0x22b14c
-		sw $t0, 160($t1)
+		sw $t0, 1280($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 164($t1)
+		sw $t0, 1284($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 168($t1)
+		sw $t0, 1288($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 172($t1)
+		sw $t0, 1292($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 176($t1)
+		sw $t0, 1296($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 180($t1)
+		sw $t0, 1300($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 184($t1)
+		sw $t0, 1304($t1)
 		li $t0, 0x22b14c
-		sw $t0, 188($t1)
+		sw $t0, 1308($t1)
 		li $t0, 0x22b14c
-		sw $t0, 192($t1)
+		sw $t0, 1536($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 196($t1)
+		sw $t0, 1540($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 200($t1)
+		sw $t0, 1544($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 204($t1)
+		sw $t0, 1548($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 208($t1)
+		sw $t0, 1552($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 212($t1)
+		sw $t0, 1556($t1)
 		li $t0, 0xd3f9bc
-		sw $t0, 216($t1)
+		sw $t0, 1560($t1)
 		li $t0, 0x22b14c
-		sw $t0, 220($t1)
+		sw $t0, 1564($t1)
 		li $t0, 0x22b14c
-		sw $t0, 224($t1)
+		sw $t0, 1792($t1)
 		li $t0, 0x22b14c
-		sw $t0, 228($t1)
+		sw $t0, 1796($t1)
 		li $t0, 0x22b14c
-		sw $t0, 232($t1)
+		sw $t0, 1800($t1)
 		li $t0, 0x22b14c
-		sw $t0, 236($t1)
+		sw $t0, 1804($t1)
 		li $t0, 0x22b14c
-		sw $t0, 240($t1)
+		sw $t0, 1808($t1)
 		li $t0, 0x22b14c
-		sw $t0, 244($t1)
+		sw $t0, 1812($t1)
 		li $t0, 0x22b14c
-		sw $t0, 248($t1)
+		sw $t0, 1816($t1)
 		li $t0, 0x22b14c
-		sw $t0, 252($t1)
+		sw $t0, 1820($t1)
+
 
 
 # Update the player location based on the current keypress.

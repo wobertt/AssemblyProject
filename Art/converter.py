@@ -33,7 +33,7 @@ pixels = iter(im.getdata())     # next(pixels) = (red, green, blue, alpha)
 for i in range(height):
     for j in range(width):
         r, g, b, _ = next(pixels)
-        offset = i * width + j
+        offset = i * 64 + j
         
         load_col_instruction = f'li {COLOUR_REG}, {hex(r << 16 | g << 8 | b)}'
         draw_pixel_instruction = f'sw {COLOUR_REG}, {4*offset}({ADDRESS_REG})'
