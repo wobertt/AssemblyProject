@@ -1,0 +1,8644 @@
+java -jar /Users/robertchung/.vscode/extensions/triciopo.vscode-mips-0.3.1/mars.jar ./game.asm
+MARS 4.5  Copyright 2003-2014 Pete Sanderson and Kenneth Vollmar
+
+0x10010000
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1
+0 0
+0x10008000 <- Address added to stack
+0 4
+0x10008004 <- Address added to stack
+0 8
+0x10008008 <- Address added to stack
+0 12
+0x1000800c <- Address added to stack
+0 16
+0x10008010 <- Address added to stack
+0 20
+0x10008014 <- Address added to stack
+0 24
+0x10008018 <- Address added to stack
+0 28
+0x1000801c <- Address added to stack
+4 0
+0x10008100 <- Address added to stack
+4 4
+0x10008104 <- Address added to stack
+4 8
+0x10008108 <- Address added to stack
+4 12
+0x1000810c <- Address added to stack
+4 16
+0x10008110 <- Address added to stack
+4 20
+0x10008114 <- Address added to stack
+4 24
+0x10008118 <- Address added to stack
+4 28
+0x1000811c <- Address added to stack
+8 0
+0x10008200 <- Address added to stack
+8 4
+0x10008204 <- Address added to stack
+8 8
+0x10008208 <- Address added to stack
+8 12
+0x1000820c <- Address added to stack
+8 16
+0x10008210 <- Address added to stack
+8 20
+0x10008214 <- Address added to stack
+8 24
+0x10008218 <- Address added to stack
+8 28
+0x1000821c <- Address added to stack
+12 0
+0x10008300 <- Address added to stack
+12 4
+0x10008304 <- Address added to stack
+12 8
+0x10008308 <- Address added to stack
+12 12
+0x1000830c <- Address added to stack
+12 16
+0x10008310 <- Address added to stack
+12 20
+0x10008314 <- Address added to stack
+12 24
+0x10008318 <- Address added to stack
+12 28
+0x1000831c <- Address added to stack
+16 0
+0x10008400 <- Address added to stack
+16 4
+0x10008404 <- Address added to stack
+16 8
+0x10008408 <- Address added to stack
+16 12
+0x1000840c <- Address added to stack
+16 16
+0x10008410 <- Address added to stack
+16 20
+0x10008414 <- Address added to stack
+16 24
+0x10008418 <- Address added to stack
+16 28
+0x1000841c <- Address added to stack
+20 0
+0x10008500 <- Address added to stack
+20 4
+0x10008504 <- Address added to stack
+20 8
+0x10008508 <- Address added to stack
+20 12
+0x1000850c <- Address added to stack
+20 16
+0x10008510 <- Address added to stack
+20 20
+0x10008514 <- Address added to stack
+20 24
+0x10008518 <- Address added to stack
+20 28
+0x1000851c <- Address added to stack
+24 0
+0x10008600 <- Address added to stack
+24 4
+0x10008604 <- Address added to stack
+24 8
+0x10008608 <- Address added to stack
+24 12
+0x1000860c <- Address added to stack
+24 16
+0x10008610 <- Address added to stack
+24 20
+0x10008614 <- Address added to stack
+24 24
+0x10008618 <- Address added to stack
+24 28
+0x1000861c <- Address added to stack
+28 0
+0x10008700 <- Address added to stack
+28 4
+0x10008704 <- Address added to stack
+28 8
+0x10008708 <- Address added to stack
+28 12
+0x1000870c <- Address added to stack
+28 16
+0x10008710 <- Address added to stack
+28 20
+0x10008714 <- Address added to stack
+28 24
+0x10008718 <- Address added to stack
+28 28
+0x1000871c <- Address added to stack
+0x100100fc
+0x1000871c
+64
+0x100100f8
+0x10008718
+63
+0x100100f4
+0x10008714
+62
+0x100100f0
+0x10008710
+61
+0x100100ec
+0x1000870c
+60
+0x100100e8
+0x10008708
+59
+0x100100e4
+0x10008704
+58
+0x100100e0
+0x10008700
+57
+0x100100dc
+0x1000861c
+56
+0x100100d8
+0x10008618
+55
+0x100100d4
+0x10008614
+54
+0x100100d0
+0x10008610
+53
+0x100100cc
+0x1000860c
+52
+0x100100c8
+0x10008608
+51
+0x100100c4
+0x10008604
+50
+0x100100c0
+0x10008600
+49
+0x100100bc
+0x1000851c
+48
+0x100100b8
+0x10008518
+47
+0x100100b4
+0x10008514
+46
+0x100100b0
+0x10008510
+45
+0x100100ac
+0x1000850c
+44
+0x100100a8
+0x10008508
+43
+0x100100a4
+0x10008504
+42
+0x100100a0
+0x10008500
+41
+0x1001009c
+0x1000841c
+40
+0x10010098
+0x10008418
+39
+0x10010094
+0x10008414
+38
+0x10010090
+0x10008410
+37
+0x1001008c
+0x1000840c
+36
+0x10010088
+0x10008408
+35
+0x10010084
+0x10008404
+34
+0x10010080
+0x10008400
+33
+0x1001007c
+0x1000831c
+32
+0x10010078
+0x10008318
+31
+0x10010074
+0x10008314
+30
+0x10010070
+0x10008310
+29
+0x1001006c
+0x1000830c
+28
+0x10010068
+0x10008308
+27
+0x10010064
+0x10008304
+26
+0x10010060
+0x10008300
+25
+0x1001005c
+0x1000821c
+24
+0x10010058
+0x10008218
+23
+0x10010054
+0x10008214
+22
+0x10010050
+0x10008210
+21
+0x1001004c
+0x1000820c
+20
+0x10010048
+0x10008208
+19
+0x10010044
+0x10008204
+18
+0x10010040
+0x10008200
+17
+0x1001003c
+0x1000811c
+16
+0x10010038
+0x10008118
+15
+0x10010034
+0x10008114
+14
+0x10010030
+0x10008110
+13
+0x1001002c
+0x1000810c
+12
+0x10010028
+0x10008108
+11
+0x10010024
+0x10008104
+10
+0x10010020
+0x10008100
+9
+0x1001001c
+0x1000801c
+8
+0x10010018
+0x10008018
+7
+0x10010014
+0x10008014
+6
+0x10010010
+0x10008010
+5
+0x1001000c
+0x1000800c
+4
+0x10010008
+0x10008008
+3
+0x10010004
+0x10008004
+2
+0x10010000
+0x10008000
+1

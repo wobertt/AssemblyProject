@@ -22,3 +22,5 @@ Order of events:
 
 
 1. add "to clear" pixels to stack
+
+TODO: credit benchislett

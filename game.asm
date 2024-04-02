@@ -34,39 +34,64 @@
 # TODO
 #####################################################################
 
-.text
-
-
 # --------------------- CONSTANTS --------------------- #
+.text
 # TODO: reconsider what you're storing in registers. This probably isn't it if you're using functions.
 # You have 18 registers, 8 saved and 10 temporary.
+
+    # Stored in pixel format (always a multiple of 4).
     .eqv PLAYER_X $s0
-    li PLAYER_X 0
+    li PLAYER_X, 0
 
     .eqv PLAYER_Y $s1
-    li PLAYER_Y 0
+    li PLAYER_Y, 0
 
     .eqv BASE_ADR $s7
-    li BASE_ADR 0x10008000
+    li BASE_ADR, 0x10008000
 
     .eqv KEY_ADR $s6
-    li KEY_ADR 0xffff0000
+    li KEY_ADR, 0xffff0000
+
+    .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
+    la CLEAR_STACK_ADR, to_clear_stack
+
+    .eqv CLEAR_COLOUR $s4
+    li CLEAR_COLOUR 0x0000ff
 
 
 # Numeric constants
+    .eqv PLAYER_WIDTH 8
+    .eqv PLAYER_HEIGHT 8
     .eqv MIN_PLAYER_X 0
     .eqv MIN_PLAYER_Y 0
     .eqv MAX_PLAYER_X 224
     .eqv MAX_PLAYER_Y 224
 
+    .eqv DISPLAY_WIDTH_PIXELS 256
+
+# --------------------- DATA --------------------- #
+.data
+    to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
+    to_clear_stack_size: .word 0
+
+    newline_str: .asciiz "\n"
+
 
 # --------------------- MACROS --------------------- #
+.text
 # I'm treating these as custom pseudoinstructions!
 
 # Print the contents of register %s as an int.
 .macro print_int (%s)
     move $a0, %s
     li $v0, 1
+    syscall
+.end_macro
+
+# Print the contents of register %s in hex.
+.macro print_hex (%s)
+    move $a0, %s
+    li $v0, 34
     syscall
 .end_macro
 
@@ -80,6 +105,14 @@
     li $v0, 4
     syscall
 .end_macro
+
+# Print a newline.
+.macro print_newline
+    la $a0, newline_str
+    li $v0, 4
+    syscall
+.end_macro
+
 
 # Store the current keypress in %s, if possible.
 # If no key was pressed, 0 is stored.
@@ -100,41 +133,104 @@
     syscall
 .end_macro
 
-# Colour the pixel `offset` units after BASE_ADR
-# with the colour %col,
-# where `offset` is the value in register %s.
-# 
-# Modifies $t9.
-.macro colour (%col, %s)
-    add $t9, BASE_ADR, %s
-    sw %col 0($t9)
+# Mark the current player's location for clearing.
+.macro mark_player_for_clear
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    jal mark_rectangle_for_clear
 .end_macro
 
 .globl main
 main:
     
 _while:
+    mark_player_for_clear
     jal check_movement
     jal draw_player
-    
-    sleep 40
+    jal clear_from_stack
+
+    sleep 100
 
     j _while
-
 
     # Exit
     li $v0, 10
     syscall
 
 
+# Mark the rectangle starting at ($a0, $a1) with height=$a2, width=$a3 for clearing.
+# a0, a1 are in pixel format, while $a2 and $a3 are in normal format.
+# Modifies $t0-$t7.
+mark_rectangle_for_clear:
+    move $t3, $a0
+    move $t4, $a1
+    move $t5, $a2
+    move $t6, $a3
+    # $t0 = increase to clear stack size
+    mul $t0, $t5, $t6
+
+    # $a2 = upper bound for $a0
+    sll $t5, $t5, 2
+    add $t5, $t5, $t3
+    # a3 = upper bound for $a2
+    sll $t6, $t6, 2
+    add $t6, $t6, $t4
+
+    for_outer_mrect: bge $t3, $t5, done_mrect
+        move $t7, $t4   # Inner looping variable
+        for_inner_mrect: bge $t7, $t6, done_inner_mrect
+            # $t1 = actual address of pixel
+            # (t3, t7) -> t3 * 64 + t7
+            sll $t1, $t3, 6
+            add $t1, $t1, $t7
+            add $t1, $t1, BASE_ADR
+            # Push actual address to be cleared to the stack.
+            sw $t1, 0(CLEAR_STACK_ADR)
+
+            addi CLEAR_STACK_ADR, CLEAR_STACK_ADR, 4
+
+            addi $t7, $t7, 4
+        j for_inner_mrect
+
+        done_inner_mrect:
+        addi $t3, $t3, 4
+    j for_outer_mrect
+    
+    done_mrect:
+        # Update stack size (add $t0)
+        la $t2, to_clear_stack_size
+        lw $t1, 0($t2)
+        add $t1, $t1, $t0
+        sw $t1, 0($t2)
+    jr $ra
+
+# Clear all addresses specified in to_clear_stack.
+# Modifies $t0, $t1, $t2.
+clear_from_stack:
+    # $t1 = address of stack size
+    la $t1, to_clear_stack_size
+    # $t0 = number of elements in stack
+    lw $t0, 0($t1)
+
+    while_stack_nonempty: blez $t0, done_clear_from_stack
+        addi CLEAR_STACK_ADR, CLEAR_STACK_ADR, -4
+        # $t2 = address to clear from the screen
+        lw $t2, 0(CLEAR_STACK_ADR)
+        sw CLEAR_COLOUR, 0($t2)
+
+        addi $t0, $t0, -1
+        j while_stack_nonempty
+
+    done_clear_from_stack:
+        sw $zero, 0($t1)    # Set stack size = 0
+    jr $ra
+
 # Draw the player. The coordinates of the top-left pixel
 # should be stored in PLAYER_X and PLAYER_Y.
 # Overwrites $t0 and $t1.
 draw_player:
-    print_int PLAYER_X
-    print_str " "
-    print_int PLAYER_Y
-    print_str "\n"
     # Set $t1 to actual memory location of top-left pixel
     move $t1, PLAYER_Y
     sll $t1, $t1, 6
@@ -273,7 +369,7 @@ draw_player:
 
 
 
-# Update the player location based on the current keypress.
+# Update the PLAYER_X and PLAYER_Y based on the current keypress.
 # Overwrites $t0.
 check_movement:
     get_keypress $t0
