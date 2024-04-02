@@ -30,13 +30,11 @@ if VERBOSE:
 # Convert to instructions
 pixels = iter(im.getdata())     # next(pixels) = (red, green, blue, alpha)
 
+
+hex_values = []
 for i in range(height):
     for j in range(width):
         r, g, b, _ = next(pixels)
-        offset = i * 64 + j
-        
-        load_col_instruction = f'li {COLOUR_REG}, {hex(r << 16 | g << 8 | b)}'
-        draw_pixel_instruction = f'sw {COLOUR_REG}, {4*offset}({ADDRESS_REG})'
+        hex_values.append(hex(r << 16 | g << 8 | b))
 
-        print(LEFT_PADDING + load_col_instruction)
-        print(LEFT_PADDING + draw_pixel_instruction)
+print(', '.join(hex_values))

@@ -71,11 +71,15 @@
 
 # --------------------- DATA --------------------- #
 .data
+    last_updated_arr: .space 16384
+    current_frame: .word 0
+
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
 
     newline_str: .asciiz "\n"
 
+    player_hex_arr: .word 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
 
 # --------------------- MACROS --------------------- #
 .text
@@ -134,6 +138,7 @@
 .end_macro
 
 # Mark the current player's location for clearing.
+# Modifies $ra.
 .macro mark_player_for_clear
     move $a0, PLAYER_Y
     move $a1, PLAYER_X
@@ -142,13 +147,25 @@
     jal mark_rectangle_for_clear
 .end_macro
 
+# Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
+# Modifies $ra.
+.macro draw_player
+    sll $a0, PLAYER_Y, 6
+    add $a0, $a0, PLAYER_X
+    add $a0, $a0, BASE_ADR
+    la $a1, player_hex_arr
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    jal draw_rectangle
+.end_macro
+
 .globl main
 main:
     
 _while:
     mark_player_for_clear
     jal check_movement
-    jal draw_player
+    draw_player
     jal clear_from_stack
 
     sleep 100
@@ -227,147 +244,39 @@ clear_from_stack:
         sw $zero, 0($t1)    # Set stack size = 0
     jr $ra
 
-# Draw the player. The coordinates of the top-left pixel
-# should be stored in PLAYER_X and PLAYER_Y.
-# Overwrites $t0 and $t1.
-draw_player:
-    # Set $t1 to actual memory location of top-left pixel
-    move $t1, PLAYER_Y
-    sll $t1, $t1, 6
-    add $t1, $t1, PLAYER_X
-    add $t1, $t1, BASE_ADR
-
-    draw_player_pixels:
-		li $t0, 0x22b14c
-		sw $t0, 0($t1)
-		li $t0, 0x22b14c
-		sw $t0, 4($t1)
-		li $t0, 0x22b14c
-		sw $t0, 8($t1)
-		li $t0, 0x22b14c
-		sw $t0, 12($t1)
-		li $t0, 0x22b14c
-		sw $t0, 16($t1)
-		li $t0, 0x22b14c
-		sw $t0, 20($t1)
-		li $t0, 0x22b14c
-		sw $t0, 24($t1)
-		li $t0, 0x22b14c
-		sw $t0, 28($t1)
-		li $t0, 0x22b14c
-		sw $t0, 256($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 260($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 264($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 268($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 272($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 276($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 280($t1)
-		li $t0, 0x22b14c
-		sw $t0, 284($t1)
-		li $t0, 0x22b14c
-		sw $t0, 512($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 516($t1)
-		li $t0, 0xa8e61d
-		sw $t0, 520($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 524($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 528($t1)
-		li $t0, 0xa8e61d
-		sw $t0, 532($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 536($t1)
-		li $t0, 0x22b14c
-		sw $t0, 540($t1)
-		li $t0, 0x22b14c
-		sw $t0, 768($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 772($t1)
-		li $t0, 0xa8e61d
-		sw $t0, 776($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 780($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 784($t1)
-		li $t0, 0xa8e61d
-		sw $t0, 788($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 792($t1)
-		li $t0, 0x22b14c
-		sw $t0, 796($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1024($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1028($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1032($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1036($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1040($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1044($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1048($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1052($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1280($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1284($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1288($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1292($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1296($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1300($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1304($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1308($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1536($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1540($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1544($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1548($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1552($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1556($t1)
-		li $t0, 0xd3f9bc
-		sw $t0, 1560($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1564($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1792($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1796($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1800($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1804($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1808($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1812($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1816($t1)
-		li $t0, 0x22b14c
-		sw $t0, 1820($t1)
 
 
+# Draw the rectangle starting at the address $a0, with height = $a2, width = $a3.
+# The address of the start of the colour array should be in $a1.
+# Modifies $t0-$t5.
+draw_rectangle:
+    move $t0, $a0
+    move $t1, $a1
+    move $t2, $a2
+    move $t3, $a3
+ 
+    for_outer_drect: blez $t2, done_outer_drect
+        move $t4, $t0   # Address for this row
+        
+        move $t5, $t3   # Counter for inner loop
+        for_inner_drect: blez $t5, done_inner_drect
+            # Draw (all drawing stuff is here)
+            lw $t6, 0($t1)  # Load colour
+            sw $t6, 0($t4)
+            # TODO - update "to clear" thing?
+
+            # Increment inner
+            addi $t5, $t5, -1
+            addi $t4, $t4, 4
+            addi $t1, $t1, 4    # Colour array always increments
+            j for_inner_drect
+        done_inner_drect:
+        # Increment outer
+        addi $t2, $t2, -1
+        addi $t0, $t0, DISPLAY_WIDTH_PIXELS
+        j for_outer_drect
+    done_outer_drect:
+    jr $ra
 
 # Update the PLAYER_X and PLAYER_Y based on the current keypress.
 # Overwrites $t0.
