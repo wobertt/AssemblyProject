@@ -58,6 +58,9 @@
     .eqv CLEAR_COLOUR $s4
     li CLEAR_COLOUR 0x0000ff
 
+    .eqv CUR_FRAME $s3
+    move CUR_FRAME, $zero
+
 
 # Numeric constants
     .eqv PLAYER_WIDTH 8
@@ -72,7 +75,7 @@
 # --------------------- DATA --------------------- #
 .data
     last_updated_arr: .space 16384
-    current_frame: .word 0
+    # Current frame stored in register
 
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
@@ -163,6 +166,8 @@
 main:
     
 _while:
+    addi CUR_FRAME, CUR_FRAME, 1
+
     mark_player_for_clear
     jal check_movement
     draw_player
@@ -248,12 +253,16 @@ clear_from_stack:
 
 # Draw the rectangle starting at the address $a0, with height = $a2, width = $a3.
 # The address of the start of the colour array should be in $a1.
-# Modifies $t0-$t5.
+# Modifies $t0-$t?.
+# TODO ^
 draw_rectangle:
     move $t0, $a0
     move $t1, $a1
     move $t2, $a2
     move $t3, $a3
+
+    la $t8, last_updated_arr    # Offset for last_updated_arr
+    sub $t8, $t8, BASE_ADR
  
     for_outer_drect: blez $t2, done_outer_drect
         move $t4, $t0   # Address for this row
@@ -262,8 +271,9 @@ draw_rectangle:
         for_inner_drect: blez $t5, done_inner_drect
             # Draw (all drawing stuff is here)
             lw $t6, 0($t1)  # Load colour
-            sw $t6, 0($t4)
-            # TODO - update "to clear" thing?
+            sw $t6, 0($t4)  # Draw to screen
+            add $t7, $t4, $t8
+            sw CUR_FRAME 0($t7) # Update last_updated_arr
 
             # Increment inner
             addi $t5, $t5, -1
