@@ -86,7 +86,6 @@
 
 # --------------------- MACROS --------------------- #
 .text
-# I'm treating these as custom pseudoinstructions!
 
 # Print the contents of register %s as an int.
 .macro print_int (%s)
@@ -173,7 +172,7 @@ _while:
     draw_player
     jal clear_from_stack
 
-    sleep 100
+    sleep 33
 
     j _while
 
@@ -229,19 +228,29 @@ mark_rectangle_for_clear:
     jr $ra
 
 # Clear all addresses specified in to_clear_stack.
-# Modifies $t0, $t1, $t2.
+# Modifies t-registers.
 clear_from_stack:
     # $t1 = address of stack size
     la $t1, to_clear_stack_size
     # $t0 = number of elements in stack
     lw $t0, 0($t1)
 
+    la $t8, last_updated_arr
+    sub $t8, $t8, BASE_ADR
+
     while_stack_nonempty: blez $t0, done_clear_from_stack
         addi CLEAR_STACK_ADR, CLEAR_STACK_ADR, -4
         # $t2 = address to clear from the screen
+        # $t3 = last updated frame
         lw $t2, 0(CLEAR_STACK_ADR)
-        sw CLEAR_COLOUR, 0($t2)
+        add $t3, $t8, $t2
+        lw $t3, 0($t3)
 
+        beq $t3, CUR_FRAME, increment_while_stack_nonempty
+        # Clear colour
+        sw CLEAR_COLOUR, 0($t2)
+    
+    increment_while_stack_nonempty:
         addi $t0, $t0, -1
         j while_stack_nonempty
 
@@ -288,7 +297,7 @@ draw_rectangle:
     done_outer_drect:
     jr $ra
 
-# Update the PLAYER_X and PLAYER_Y based on the current keypress.
+# Update PLAYER_X and PLAYER_Y based on the current keypress.
 # Overwrites $t0.
 check_movement:
     get_keypress $t0
