@@ -46,6 +46,8 @@
     .eqv PLAYER_Y $s1
     li PLAYER_Y, 0
 
+    .eqv STATUS_ARR_ADR $s2
+    la STATUS_ARR_ADR, grid_status_arr
 
     .eqv CUR_FRAME $s3
     move CUR_FRAME, $zero
