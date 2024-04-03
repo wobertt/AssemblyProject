@@ -1,6 +1,7 @@
 .text
 
-main:
-    _label:
-test:
-    _label:
+
+
+.macro apply_rect (%macro)
+    %macro
+.end_macro

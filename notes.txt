@@ -10,7 +10,12 @@ Milestone 3:
 Milestone 4:
 - moving objects
 - shoot enemies
+
+- multiple levels
+- enemies shoot you
 - double jump
+
+
 
 Smooth graphics and consistent framerate:
 https://play.library.utoronto.ca/watch/d963232a065b1c3a433bcde7962c8a79
