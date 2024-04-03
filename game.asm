@@ -46,20 +46,21 @@
     .eqv PLAYER_Y $s1
     li PLAYER_Y, 0
 
-    .eqv BASE_ADR $s7
-    li BASE_ADR, 0x10008000
 
-    .eqv KEY_ADR $s6
-    li KEY_ADR, 0xffff0000
-
-    .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
-    la CLEAR_STACK_ADR, to_clear_stack
+    .eqv CUR_FRAME $s3
+    move CUR_FRAME, $zero
 
     .eqv CLEAR_COLOUR $s4
     li CLEAR_COLOUR 0x0000ff
 
-    .eqv CUR_FRAME $s3
-    move CUR_FRAME, $zero
+    .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
+    la CLEAR_STACK_ADR, to_clear_stack
+
+    .eqv KEY_ADR $s6
+    li KEY_ADR, 0xffff0000
+
+    .eqv BASE_ADR $s7
+    li BASE_ADR, 0x10008000
 
 
 # Numeric constants
@@ -102,7 +103,7 @@
 
 ### Grid status macro
 # TODO
-# .macro get_status (%)
+.macro get_status (%)
 
 ### Printing macros
 
