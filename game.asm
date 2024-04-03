@@ -72,10 +72,14 @@
 
     .eqv DISPLAY_WIDTH_PIXELS 256
 
+    # Status mask constants
+    .eqv PLATFORM_S 0
+
 # --------------------- DATA --------------------- #
 .data
-    last_updated_arr: .space 16384
-    # Current frame stored in register
+    last_updated_arr: .word 0:4096 # Current frame (used to update this) is stored in register
+
+    grid_status_arr: .word 0:4096
 
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
@@ -86,6 +90,21 @@
 
 # --------------------- MACROS --------------------- #
 .text
+
+# (All arguments are registers)
+# Convert the pixel values stored in %x and %y into a grid address starting at %start_adr.
+# The result is stored in %dest.
+.macro to_address (%dest, %start_adr, %x, %y)
+    sll %dest, %y, 6
+    add %dest, %dest, %x
+    add %dest, %dest, %start_adr
+.end_macro
+
+### Grid status macro
+# TODO
+# .macro get_status (%)
+
+### Printing macros
 
 # Print the contents of register %s as an int.
 .macro print_int (%s)
@@ -152,18 +171,45 @@
 # Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
 # Modifies $ra.
 .macro draw_player
-    sll $a0, PLAYER_Y, 6
-    add $a0, $a0, PLAYER_X
-    add $a0, $a0, BASE_ADR
+    to_address $a0, BASE_ADR, PLAYER_X, PLAYER_Y
     la $a1, player_hex_arr
     li $a2, PLAYER_HEIGHT
     li $a3, PLAYER_WIDTH
     jal draw_rectangle
 .end_macro
 
+
+# Apply %macro to each pixel in the rectangle starting at the address $a0, with height = $a2, width = $a3.
+# Each time %macro is applied, it's guaranteed that $t4 contains the address of the current pixel.
+# For convenience, the temporary registers 1, 6, 7, 8, 9 will not be modified between calls to %macro.
+.macro apply_rect (%macro)
+    move $t0, $a0
+    move $t2, $a2
+    move $t3, $a3
+ 
+    for_outer_apply_rect: blez $t2, done_outer_apply_rect
+        move $t4, $t0   # Address for this row
+        
+        move $t5, $t3   # Counter for inner loop
+        for_inner_apply_rect: blez $t5, done_inner_apply_rect
+            %macro
+            # Increment inner
+            addi $t5, $t5, -1
+            addi $t4, $t4, 4    # Update address for the macro
+            j for_inner_apply_rect
+        done_inner_apply_rect:
+        # Increment outer
+        addi $t2, $t2, -1
+        addi $t0, $t0, DISPLAY_WIDTH_PIXELS
+        j for_outer_apply_rect
+    done_outer_apply_rect:
+.end_macro
+
+
+
 .globl main
 main:
-    
+    # TODO - reset all globals
 _while:
     addi CUR_FRAME, CUR_FRAME, 1
 
@@ -262,8 +308,7 @@ clear_from_stack:
 
 # Draw the rectangle starting at the address $a0, with height = $a2, width = $a3.
 # The address of the start of the colour array should be in $a1.
-# Modifies $t0-$t?.
-# TODO ^
+# Modifies $t0-$t8.
 draw_rectangle:
     move $t0, $a0
     move $t1, $a1
