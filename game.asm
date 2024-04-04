@@ -75,8 +75,9 @@
 
     .eqv DISPLAY_WIDTH_PIXELS 256
 
-    # Status mask constants
-    .eqv PLATFORM_S 0
+    # Status mask constants - MUST BE POWERS OF TWO
+    .eqv PLATFORM_MASK 1
+    .eqv NOT_PLATFORM_MASK 0xfffe
 
 # --------------------- DATA --------------------- #
 .data
@@ -103,9 +104,42 @@
     add %dest, %dest, %start_adr
 .end_macro
 
-### Grid status macro
-# TODO
-.macro get_status (%)
+# Write the contents of %col_reg to the screen at pixels (%x, %y).
+# Modifies $t8.
+.macro colour (%x, %y, %col_reg)
+    to_address $t8, BASE_ADR, %x, %y
+    sw %col_reg, 0($t8)
+.end_macro
+### Grid status macros
+
+# Check the %status_mask constant at (%x, %y) and store the result in %dest.
+# If the status was set, %dest will be set to some nonzero value. Otherwise, it will be zero.
+.macro check_status (%dest, %x, %y, %status_mask)
+    # Initially %dest contains the address used to fetch the status
+    to_address %dest, STATUS_ARR_ADR, %x, %y
+    # Now %dest is the actual status
+    lw %dest, 0(%dest)
+    andi %dest, %dest, %status_mask
+.end_macro
+
+# Add %status_mask to the location (%x, %y).
+# Modifies $t8, $t9.
+.macro add_status (%x, %y, %status_mask)
+    to_address $t8, STATUS_ARR_ADR, %x, %y
+    lw $t9, 0($t8)
+    ori $t9, $t9, %status_mask
+    sw $t9, 0($t8)
+.end_macro
+
+# Remove %not_status_mask to the location (%x, %y).
+# Modifies $t8, $t9.
+# %not_status_mask should use the "NOT_" version of the status.
+.macro remove_status (%x, %y, %not_status_mask)
+    to_address $t8, STATUS_ARR_ADR, %x, %y
+    lw $t9, 0($t8)
+    andi $t9, $t9, %not_status_mask
+    sw $t9, 0($t8)
+.end_macro
 
 ### Printing macros
 
@@ -182,37 +216,59 @@
 .end_macro
 
 
-# Apply %macro to each pixel in the rectangle starting at the address $a0, with height = $a2, width = $a3.
-# Each time %macro is applied, it's guaranteed that $t4 contains the address of the current pixel.
-# For convenience, the temporary registers 1, 6, 7, 8, 9 will not be modified between calls to %macro.
+# Apply %macro to each pixel in the rectangle starting at the pixel values ($a0, $a1), with height = $a2, width = $a3.
+# %macro will be called with two registers (%x, %y) (must have %x and %y const!).
+# For convenience, the temporary registers 5-9 will not be modified between calls to %macro.
 .macro apply_rect (%macro)
     move $t0, $a0
-    move $t2, $a2
-    move $t3, $a3
- 
-    for_outer_apply_rect: blez $t2, done_outer_apply_rect
-        move $t4, $t0   # Address for this row
-        
-        move $t5, $t3   # Counter for inner loop
-        for_inner_apply_rect: blez $t5, done_inner_apply_rect
-            %macro
-            # Increment inner
-            addi $t5, $t5, -1
-            addi $t4, $t4, 4    # Update address for the macro
-            j for_inner_apply_rect
-        done_inner_apply_rect:
-        # Increment outer
-        addi $t2, $t2, -1
-        addi $t0, $t0, DISPLAY_WIDTH_PIXELS
-        j for_outer_apply_rect
-    done_outer_apply_rect:
+    move $t1, $a1
+
+    sll $t2, $a2, 2
+    add $t2, $t2, $t0   # t2 = 4 + max_y
+
+    sll $t3, $a3, 2
+    add $t3, $t3, $t1 # t3 = 4 + max_x
+    
+
+    loop_y: bge $t0, $t2, done_loop_y
+
+        move $t4, $t1
+        loop_x: bge $t4, $t3, done_loop_x
+            %macro $t4, $t0
+            
+            addi $t4, $t4, 4
+            j loop_x
+        done_loop_x:
+
+        addi $t0, $t0, 4
+        j loop_y
+    done_loop_y:
 .end_macro
 
+# Draw a platform pixel at (%x, %y).
+# Modifies $t9, $t8.
+.macro draw_platform_pixel (%x, %y)
+    li $t7, 0xff0000    # Platform colour
+    colour %x, %y, $t7
+    add_status %x, %y, PLATFORM_MASK
+.end_macro
+
+# Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
+# Modifies t registers.
+.macro draw_platform
+    apply_rect draw_platform_pixel
+.end_macro
 
 
 .globl main
 main:
-    # TODO - reset all globals
+    
+    li $a0, 64
+    li $a1, 64
+    li $a2, 8
+    li $a3, 8
+    draw_platform
+
 _while:
     addi CUR_FRAME, CUR_FRAME, 1
 
