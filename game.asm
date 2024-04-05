@@ -88,9 +88,11 @@
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
 
+    player_hex_arr: .word 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+
     newline_str: .asciiz "\n"
 
-    player_hex_arr: .word 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+    player_vel: .word 0 0
 
 # --------------------- MACROS --------------------- #
 .text
@@ -227,7 +229,7 @@
     add $t2, $t2, $t0   # t2 = 4 + max_y
 
     sll $t3, $a3, 2
-    add $t3, $t3, $t1 # t3 = 4 + max_x
+    add $t3, $t3, $t1   # t3 = 4 + max_x
     
 
     loop_y: bge $t0, $t2, done_loop_y
@@ -259,6 +261,8 @@
     apply_rect draw_platform_pixel
 .end_macro
 
+# TODO .macro draw_borders
+
 
 .globl main
 main:
@@ -273,11 +277,12 @@ _while:
     addi CUR_FRAME, CUR_FRAME, 1
 
     mark_player_for_clear
-    jal check_movement
+    jal check_keypress
+    jal apply_movement
     draw_player
     jal clear_from_stack
 
-    sleep 33
+    sleep 100
 
     j _while
 
@@ -401,29 +406,101 @@ draw_rectangle:
     done_outer_drect:
     jr $ra
 
-# Update PLAYER_X and PLAYER_Y based on the current keypress.
+# Check for all keypresses and handle them accordingly.
 # Overwrites $t0.
-check_movement:
+# TODO - fix overwrite description
+check_keypress:
+
     get_keypress $t0
 
-    move_player_up: bne $t0, 119, move_player_left
-        beq PLAYER_Y, MIN_PLAYER_Y, move_player_none
-        addi PLAYER_Y, PLAYER_Y, -4
+    la $t1, player_vel  # offset 0 for xvel, 4 for yvel
+    # t2 = xvel for this iter, t2 = yvel for this iter
+    move $t2, $zero
+    li $t3, 4
+
+    w_keypress: bne $t0, 119, a_keypress
+        # TODO - jump
+        j done_keypress
+
+    a_keypress: bne $t0, 97, s_keypress
+        li $t2, -4
+        j done_keypress
+
+    s_keypress: bne $t0, 115, d_keypress
+
+        j done_keypress
+
+    d_keypress: bne $t0, 100, done_keypress
+        li $t2, 4
+        j done_keypress
+    
+
+    done_keypress:
+        sw $t2, 0($t1)  # Store xvel
+        sw $t3, 4($t1)  # Store yvel
         jr $ra
 
-    move_player_left: bne $t0, 97, move_player_down 
-        beq PLAYER_X, MIN_PLAYER_X, move_player_none
-        addi PLAYER_X, PLAYER_X, -4
-        jr $ra
 
-    move_player_down: bne $t0, 115, move_player_right
-        beq PLAYER_Y, MAX_PLAYER_Y, move_player_none
-        addi PLAYER_Y, PLAYER_Y, 4
-        jr $ra
 
-    move_player_right: bne $t0, 100, move_player_none
-        beq PLAYER_X, MAX_PLAYER_Y, move_player_none
-        addi PLAYER_X, PLAYER_X, 4
+# Move the player based on player_vel.
+# This does collision and out-of-bounds checking.
+apply_movement:
 
-    move_player_none:
+    la $t1, player_vel
+
+    lw $t2, 0($t1)  # xvel
+    lw $t3, 4($t1)  # yvel
+
+    check_movement_x: beq $t2, $zero, check_movement_y
+        # t4 = x-value to check.
+        # t6 = is valid (bool)
+        li $t6, 1
+
+        addi $t5, PLAYER_Y, 28  # y (init value for the loop)
+
+        if_xright: bltz $t2, if_xleft
+            addi $t4, PLAYER_X, 32
+        if_xleft: bgtz $t2, check_x
+            addi $t4, PLAYER_X, -4
+
+        # check x = $t4, y in rev(range(PLAYER_Y, PLAYER_Y+8)) for collisions
+        check_x: blt $t5, PLAYER_Y, apply_movement_x
+            
+            check_status $t7, $t4, $t5, PLATFORM_MASK
+            bne $t7, $zero, bad_x
+
+            addi $t5, $t5, -4
+        j check_x
+        
+        bad_x: move $t6, $zero  # Collision in x direction
+
+        apply_movement_x: beq $t6, $zero, check_movement_y
+            add PLAYER_X, PLAYER_X, $t2
+    
+
+    check_movement_y: beq $t3, $zero, done_movement
+        # t4 = y-value to check
+        # t6 = is valid (bool)
+        li $t6, 1
+
+        addi $t5, PLAYER_X, 28 # init x for the loop
+
+        if_yup: bltz $t3, if_ydown
+            addi $t4, PLAYER_Y, 32
+        if_ydown: bgtz $t3, check_y
+            addi $t4, PLAYER_Y, -4
+        
+        check_y: blt $t5, PLAYER_X, apply_movement_y
+            check_status $t7, $t5, $t4, PLATFORM_MASK
+            bne $t7, $zero, bad_y
+
+            addi $t5, $t5, -4
+        j check_y
+
+        bad_y: move $t6, $zero  # Collision in y direction
+
+        apply_movement_y: beq $t6, $zero, done_movement
+            add PLAYER_Y, PLAYER_Y, $t3        
+
+    done_movement:
         jr $ra
