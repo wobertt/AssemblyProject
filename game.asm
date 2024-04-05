@@ -73,11 +73,13 @@
     .eqv MAX_PLAYER_X 224
     .eqv MAX_PLAYER_Y 224
 
+    .eqv JUMP_HEIGHT 10
+
     .eqv DISPLAY_WIDTH_PIXELS 256
 
     # Status mask constants - MUST BE POWERS OF TWO
-    .eqv PLATFORM_MASK 1
-    .eqv NOT_PLATFORM_MASK 0xfffe
+    .eqv NO_OVERLAP_MASK 1
+    .eqv NOT_NO_OVERLAP_MASK 0xfffe
 
 # --------------------- DATA --------------------- #
 .data
@@ -92,7 +94,9 @@
 
     newline_str: .asciiz "\n"
 
-    player_vel: .word 0 0
+    player_info: .word 0 0 0 2
+        # struct - xvel, yvel, jump_end, jumps_remaining
+    
 
 # --------------------- MACROS --------------------- #
 .text
@@ -112,6 +116,7 @@
     to_address $t8, BASE_ADR, %x, %y
     sw %col_reg, 0($t8)
 .end_macro
+
 ### Grid status macros
 
 # Check the %status_mask constant at (%x, %y) and store the result in %dest.
@@ -252,7 +257,7 @@
 .macro draw_platform_pixel (%x, %y)
     li $t7, 0xff0000    # Platform colour
     colour %x, %y, $t7
-    add_status %x, %y, PLATFORM_MASK
+    add_status %x, %y, NO_OVERLAP_MASK
 .end_macro
 
 # Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
@@ -261,23 +266,52 @@
     apply_rect draw_platform_pixel
 .end_macro
 
-# TODO .macro draw_borders
+# Draw all borders.
+.macro draw_borders
+    # Floor
+    li $a0, 240
+    li $a1, 0
+    li $a2, 4
+    li $a3, 64
+    draw_platform
+    
+    # Left border
+    li $a0, 0
+    li $a1, 0
+    li $a2, 64
+    li $a3, 1
+    draw_platform
+
+    # Right border
+    li $a0, 0
+    li $a1, 252
+    li $a2, 64
+    li $a3, 1
+    draw_platform
+
+    # Ceiling
+    li $a0, 0
+    li $a1, 0
+    li $a2, 1
+    li $a3, 64
+    draw_platform
+.end_macro
 
 
 .globl main
 main:
+    # TODO - reset button
+    li PLAYER_X, 4
+    li PLAYER_Y, 4
     
-    li $a0, 64
-    li $a1, 64
-    li $a2, 8
-    li $a3, 8
-    draw_platform
+    draw_borders
 
 _while:
     addi CUR_FRAME, CUR_FRAME, 1
 
     mark_player_for_clear
     jal check_keypress
+    jal get_yvel_from_jump
     jal apply_movement
     draw_player
     jal clear_from_stack
@@ -407,19 +441,24 @@ draw_rectangle:
     jr $ra
 
 # Check for all keypresses and handle them accordingly.
-# Overwrites $t0.
-# TODO - fix overwrite description
+# Modifies t-registers.
 check_keypress:
 
     get_keypress $t0
 
-    la $t1, player_vel  # offset 0 for xvel, 4 for yvel
-    # t2 = xvel for this iter, t2 = yvel for this iter
+    la $t1, player_info  # offset 0 for xvel, 8 for jump status
+    # t2 = xvel for this iter, t3 = end of jump frame
     move $t2, $zero
-    li $t3, 4
+    lw $t3, 8($t1)  # jump frame
+    lw $t4, 12($t1) # jumps remaining
 
     w_keypress: bne $t0, 119, a_keypress
-        # TODO - jump
+        blt CUR_FRAME, $t3, done_keypress   # Already jumping
+        blez $t4, done_keypress             # No jumps remaining
+        
+        # Jump
+        addi $t3, CUR_FRAME, JUMP_HEIGHT
+        addi $t4, $t4, -1
         j done_keypress
 
     a_keypress: bne $t0, 97, s_keypress
@@ -437,16 +476,34 @@ check_keypress:
 
     done_keypress:
         sw $t2, 0($t1)  # Store xvel
-        sw $t3, 4($t1)  # Store yvel
+        sw $t3, 8($t1)  # Store jump status
+        sw $t4, 12($t1) # Store jumps remaining
         jr $ra
 
+# Modify the player's yvel based on the jump status.
+get_yvel_from_jump:
+    la $t1, player_info
+    lw $t0, 8($t1)  # jump status
 
+    # t2 = yvel
 
-# Move the player based on player_vel.
+    is_jumping: bge CUR_FRAME, $t0, is_not_jumping
+        li $t2, -4
+        j update_yvel
+    is_not_jumping:
+        li $t2, 4   # Gravity
+
+    update_yvel:
+        sw $t2, 4($t1)
+    
+    jr $ra
+
+# Move the player based on player_info.
 # This does collision and out-of-bounds checking.
+# Modifies t-registers.
 apply_movement:
 
-    la $t1, player_vel
+    la $t1, player_info
 
     lw $t2, 0($t1)  # xvel
     lw $t3, 4($t1)  # yvel
@@ -466,7 +523,7 @@ apply_movement:
         # check x = $t4, y in rev(range(PLAYER_Y, PLAYER_Y+8)) for collisions
         check_x: blt $t5, PLAYER_Y, apply_movement_x
             
-            check_status $t7, $t4, $t5, PLATFORM_MASK
+            check_status $t7, $t4, $t5, NO_OVERLAP_MASK
             bne $t7, $zero, bad_x
 
             addi $t5, $t5, -4
@@ -491,16 +548,35 @@ apply_movement:
             addi $t4, PLAYER_Y, -4
         
         check_y: blt $t5, PLAYER_X, apply_movement_y
-            check_status $t7, $t5, $t4, PLATFORM_MASK
+            check_status $t7, $t5, $t4, NO_OVERLAP_MASK
             bne $t7, $zero, bad_y
 
             addi $t5, $t5, -4
         j check_y
 
         bad_y: move $t6, $zero  # Collision in y direction
+            sw $ra, -4($sp) # abuse - we don't need to update sp
+            jal update_jump_status_from_collision
+            lw $ra, -4($sp)
 
         apply_movement_y: beq $t6, $zero, done_movement
             add PLAYER_Y, PLAYER_Y, $t3        
 
     done_movement:
         jr $ra
+
+    # (Nested in apply_movement)
+    # Update the jump status due to collision as follows - 
+    # If the player is jumping, cancel the jump.
+    # If the player is not jumping, then allow them to jump again.
+    # For convenience, only modify the registers unused in apply_movement (t8, t9).
+    update_jump_status_from_collision:
+        lw $t8, 8($t1)  # jump status
+        update_is_jumping: bge CUR_FRAME, $t8, update_not_jumping
+            sw CUR_FRAME, 8($t1)    # Jump ends this frame
+            jr $ra
+
+        update_not_jumping:
+            li $t9, 2
+            sw $t9, 12($t1)         # Two jumps remaining
+            jr $ra

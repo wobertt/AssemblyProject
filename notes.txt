@@ -1,6 +1,12 @@
+TODO:
+- implement reset button
+- add platforms
+- add enemies
+    - you can kill enemies
+
 
 Milestone 2:
-- watch out: you could jump above the screen and segfault
+
 
 Milestone 3:
 - health + score?
