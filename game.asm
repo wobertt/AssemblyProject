@@ -75,11 +75,16 @@
 
     .eqv JUMP_HEIGHT 10
 
+    .eqv ENEMY_HEIGHT 5
+    .eqv ENEMY_WIDTH 5
+
     .eqv DISPLAY_WIDTH_PIXELS 256
 
     # Status mask constants - MUST BE POWERS OF TWO
     .eqv NO_OVERLAP_MASK 1
     .eqv NOT_NO_OVERLAP_MASK 0xfffe
+    .eqv ENEMY_MASK 2
+    .eqv NOT_ENEMY_MASK 0xfffd
 
 # --------------------- DATA --------------------- #
 .data
@@ -90,12 +95,14 @@
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
 
-    player_hex_arr: .word 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+    player_hex_arr: .word 0xff22b14c, 0xee22b14c, 0x0022b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+    enemy_hex_arr: .word 0x990030, 0x0, 0x0, 0x0, 0x990030, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0x1, 0xed1c24, 0x1, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
+
 
     newline_str: .asciiz "\n"
 
     player_info: .word 0 0 0 2
-        # struct - xvel, yvel, jump_end, jumps_remaining
+    # struct - xvel, yvel, jump_end, jumps_remaining
     
 
 # --------------------- MACROS --------------------- #
@@ -223,6 +230,8 @@
 .end_macro
 
 
+### Rectangle macros
+
 # Apply %macro to each pixel in the rectangle starting at the pixel values ($a0, $a1), with height = $a2, width = $a3.
 # %macro will be called with two registers (%x, %y) (must have %x and %y const!).
 # For convenience, the temporary registers 5-9 will not be modified between calls to %macro.
@@ -252,14 +261,33 @@
     done_loop_y:
 .end_macro
 
+# Draw an enemy pixel at (%x, %y).
+# Assumes that &col_arr[i] is in $t5; this address will be incremented.
+.macro draw_enemy_pixel (%x, %y)
+    lw $t6, 0($t5)  # col
+    
+    beq $t6, $zero, done_drawing    # 0x0 is "transparent"; don't draw
+    colour %x, %y, $t6
+
+    done_drawing:
+    add_status %x, %y, ENEMY_MASK
+    addi $t5, $t5, 4
+.end_macro
+# Draw an enemy starting at ($a0, $a1).
+.macro draw_enemy
+    la $t5, enemy_hex_arr
+    li $a2, ENEMY_HEIGHT
+    li $a3, ENEMY_WIDTH
+    apply_rect draw_enemy_pixel
+.end_macro
+
 # Draw a platform pixel at (%x, %y).
-# Modifies $t9, $t8.
+# Modifies $t7-t9.
 .macro draw_platform_pixel (%x, %y)
     li $t7, 0xff0000    # Platform colour
     colour %x, %y, $t7
     add_status %x, %y, NO_OVERLAP_MASK
 .end_macro
-
 # Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
 # Modifies t registers.
 .macro draw_platform
@@ -306,6 +334,10 @@ main:
     
     draw_borders
 
+    li $a0, 24
+    li $a1, 64
+    draw_enemy 
+
 _while:
     addi CUR_FRAME, CUR_FRAME, 1
 
@@ -316,7 +348,7 @@ _while:
     draw_player
     jal clear_from_stack
 
-    sleep 100
+    sleep 30
 
     j _while
 
