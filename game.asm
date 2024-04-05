@@ -485,7 +485,7 @@ check_keypress:
     lw $t4, 12($t1) # jumps remaining
 
     w_keypress: bne $t0, 119, a_keypress
-        blt CUR_FRAME, $t3, done_keypress   # Already jumping
+        ble CUR_FRAME, $t3, done_keypress   # Already jumping or just finished jumping
         blez $t4, done_keypress             # No jumps remaining
         
         # Jump
