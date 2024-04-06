@@ -1,4 +1,5 @@
-MARS = java -jar /Users/robertchung/.vscode/extensions/triciopo.vscode-mips-0.3.1/mars.jar
+MARS = java -jar Mars_Updated.jar
+FLAGS = nc
 
 %: %.asm
-	$(MARS) ./$<
+	$(MARS) $(FLAGS) $<
