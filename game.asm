@@ -41,10 +41,7 @@
 
     # Stored in pixel format (always a multiple of 4).
     .eqv PLAYER_X $s0
-    li PLAYER_X, 0
-
     .eqv PLAYER_Y $s1
-    li PLAYER_Y, 0
 
     .eqv STATUS_ARR_ADR $s2
     la STATUS_ARR_ADR, grid_status_arr
@@ -56,7 +53,6 @@
     li CLEAR_COLOUR 0x0000ff
 
     .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
-    la CLEAR_STACK_ADR, to_clear_stack
 
     .eqv KEY_ADR $s6
     li KEY_ADR, 0xffff0000
@@ -80,11 +76,12 @@
 
     .eqv DISPLAY_WIDTH_PIXELS 256
 
-    # Status mask constants - MUST BE POWERS OF TWO
+    # Status mask constants - should be powers of two
     .eqv NO_OVERLAP_MASK 1
-    .eqv NOT_NO_OVERLAP_MASK 0xfffe
+    .eqv REMOVE_OVERLAP_MASK 0xfffe
     .eqv ENEMY_MASK 2
-    .eqv NOT_ENEMY_MASK 0xfffd
+    .eqv REMOVE_ENEMY_MASK 0xfffd
+    .eqv REMOVE_ALL 0
 
 # --------------------- DATA --------------------- #
 .data
@@ -103,6 +100,8 @@
 
     player_info: .word 0 0 0 2
     # struct - xvel, yvel, jump_end, jumps_remaining
+
+    current_level: .word 0
     
 
 # --------------------- MACROS --------------------- #
@@ -260,6 +259,32 @@
         j loop_y
     done_loop_y:
 .end_macro
+# Same as above but with %args passed to %macro.
+.macro apply_rect (%macro, %args)
+    move $t0, $a0
+    move $t1, $a1
+
+    sll $t2, $a2, 2
+    add $t2, $t2, $t0   # t2 = 4 + max_y
+
+    sll $t3, $a3, 2
+    add $t3, $t3, $t1   # t3 = 4 + max_x
+    
+
+    loop_y: bge $t0, $t2, done_loop_y
+
+        move $t4, $t1
+        loop_x: bge $t4, $t3, done_loop_x
+            %macro $t4, $t0, %args
+            
+            addi $t4, $t4, 4
+            j loop_x
+        done_loop_x:
+
+        addi $t0, $t0, 4
+        j loop_y
+    done_loop_y:
+.end_macro
 
 # Draw an enemy pixel at (%x, %y).
 # Assumes that &col_arr[i] is in $t5; this address will be incremented.
@@ -282,15 +307,18 @@
 .end_macro
 
 # Draw a platform pixel at (%x, %y).
-# Modifies $t7-t9.
+# Modifies $t8-t9.
+# t7 should contain the colour of the platform.
 .macro draw_platform_pixel (%x, %y)
-    li $t7, 0xff0000    # Platform colour
+    # Colour should be specified
     colour %x, %y, $t7
     add_status %x, %y, NO_OVERLAP_MASK
 .end_macro
 # Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
+# Uses the colour specified in the register %platform_colour.
 # Modifies t registers.
-.macro draw_platform
+.macro draw_platform (%platform_color)
+    move $t7, %platform_color
     apply_rect draw_platform_pixel
 .end_macro
 
@@ -301,44 +329,93 @@
     li $a1, 0
     li $a2, 4
     li $a3, 64
-    draw_platform
+    draw_platform CLEAR_COLOUR
     
     # Left border
     li $a0, 0
     li $a1, 0
     li $a2, 64
     li $a3, 1
-    draw_platform
+    draw_platform CLEAR_COLOUR
 
     # Right border
     li $a0, 0
     li $a1, 252
     li $a2, 64
     li $a3, 1
-    draw_platform
+    draw_platform CLEAR_COLOUR
 
     # Ceiling
     li $a0, 0
     li $a1, 0
     li $a2, 1
     li $a3, 64
-    draw_platform
+    draw_platform CLEAR_COLOUR
+.end_macro
+
+# Reset all non-level-specific data and s-registers.
+# Level-specific data should be handled separately.
+.macro reset_data
+    addi CUR_FRAME, CUR_FRAME, 1    # Lazy reset for last_updated_arr
+
+    # Clear screen
+    li $a0, 0
+    li $a1, 0
+    li $a2, 64
+    li $a3, 64
+    apply_rect colour, CLEAR_COLOUR
+
+    # Reset grid_status_arr
+    li $a0, 0
+    li $a1, 0
+    li $a2, 64
+    li $a3, 64
+    apply_rect remove_status, REMOVE_ALL
+
+    # Reset to_clear_stack
+    la CLEAR_STACK_ADR, to_clear_stack
+    la $t0, to_clear_stack_size
+    sw $zero, 0($t0)
+
+    # Reset player_info
+    la $t0, player_info
+    sw $zero, 0($t0)
+    sw $zero, 4($t0)
+    sw $zero, 8($t0)
+    li $t1, 2
+    sw $t1, 12($t0)
+.end_macro
+
+# Set data for level one.
+.macro start_level_one
+    li PLAYER_X, 8
+    li PLAYER_Y, 8
+
+    la $t0, current_level
+    li $t1, 1
+    sw $t1, 0($t0)
+
+    draw_borders
+
+    li $a0, 24
+    li $a1, 64
+    draw_enemy
+
+    li $a0, 60
+    li $a1, 0
+    li $a2, 8
+    li $a3, 64
+    li $t0, 0xff0000
+    draw_platform $t0
 .end_macro
 
 
 .globl main
 main:
-    # TODO - reset button
-    li PLAYER_X, 4
-    li PLAYER_Y, 4
-    
-    draw_borders
+    reset_data
+    start_level_one
 
-    li $a0, 24
-    li $a1, 64
-    draw_enemy 
-
-_while:
+main_loop:
     addi CUR_FRAME, CUR_FRAME, 1
 
     mark_player_for_clear
@@ -350,7 +427,7 @@ _while:
 
     sleep 30
 
-    j _while
+    j main_loop
 
     # Exit
     li $v0, 10
@@ -493,18 +570,22 @@ check_keypress:
         addi $t4, $t4, -1
         j done_keypress
 
-    a_keypress: bne $t0, 97, s_keypress
+    a_keypress: bne $t0, 97, d_keypress
         li $t2, -4
         j done_keypress
 
-    s_keypress: bne $t0, 115, d_keypress
-
-        j done_keypress
-
-    d_keypress: bne $t0, 100, done_keypress
+    d_keypress: bne $t0, 100, r_keypress
         li $t2, 4
         j done_keypress
     
+    r_keypress: bne $t0, 114, q_keypress
+        j main # TODO - reset
+
+    q_keypress: bne $t0, 113, done_keypress
+        # Exit the game
+        li $v0, 10
+        syscall
+
 
     done_keypress:
         sw $t2, 0($t1)  # Store xvel

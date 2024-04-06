@@ -1,5 +1,24 @@
 TODO:
-- implement reset button
+
+what do you do when resetting?
+
+general reset:
+- clear last_updated_arr
+- clear grid_status_arr
+- stack size = 0
+- player_info reset
+- current_level reset
+
+
+
+level-specific reset:
+- clear screen
+- create border
+- move player
+- draw platforms
+- draw enemies
+
+
 - add platforms
 - add enemies
     - you can kill enemies
@@ -31,7 +50,5 @@ Order of events:
 2. draw
 3. clear
 
-
-1. add "to clear" pixels to stack
 
 TODO: credit benchislett
