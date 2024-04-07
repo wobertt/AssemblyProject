@@ -36,7 +36,6 @@
 
 # --------------------- CONSTANTS --------------------- #
 .text
-# TODO: reconsider what you're storing in registers. This probably isn't it if you're using functions.
 # You have 18 registers, 8 saved and 10 temporary.
 
     # Stored in pixel format (always a multiple of 4).
@@ -50,7 +49,7 @@
     move CUR_FRAME, $zero
 
     .eqv CLEAR_COLOUR $s4
-    li CLEAR_COLOUR 0x0000ff
+    li CLEAR_COLOUR, 0x0
 
     .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
 
@@ -69,7 +68,7 @@
     .eqv MAX_PLAYER_X 224
     .eqv MAX_PLAYER_Y 224
 
-    .eqv JUMP_HEIGHT 10
+    .eqv JUMP_HEIGHT 12
 
     .eqv ENEMY_HEIGHT 5
     .eqv ENEMY_WIDTH 5
@@ -82,6 +81,14 @@
     .eqv ENEMY_MASK 2
     .eqv REMOVE_ENEMY_MASK 0xfffd
     .eqv REMOVE_ALL 0
+
+    # Colours
+    .eqv SKY_BLUE 0x99d9ea
+    .eqv DIRT 0x9c5a3c
+    .eqv DARK_GRAY 0x464646
+    .eqv LIGHT_GRAY 0xb4b4b4
+    .eqv HEALTHBAR_FULL 0x22b14c
+    .eqv HEALTHBAR_EMPTY 0xb4b4b4
 
 # --------------------- DATA --------------------- #
 .data
@@ -231,6 +238,15 @@
 
 ### Rectangle macros
 
+# Pass the specified immediate values as function arguments
+# for use in other rect macros.
+.macro set_rect (%x_imm, %y_imm, %width_imm, %height_imm)
+    li $a0, %y_imm
+    li $a1, %x_imm
+    li $a2, %height_imm
+    li $a3, %width_imm
+.end_macro
+
 # Apply %macro to each pixel in the rectangle starting at the pixel values ($a0, $a1), with height = $a2, width = $a3.
 # %macro will be called with two registers (%x, %y) (must have %x and %y const!).
 # For convenience, the temporary registers 5-9 will not be modified between calls to %macro.
@@ -306,50 +322,34 @@
     apply_rect draw_enemy_pixel
 .end_macro
 
-# Draw a platform pixel at (%x, %y).
+# Draw a platform pixel at (%x, %y). The colour should be in %col_reg.
 # Modifies $t8-t9.
-# t7 should contain the colour of the platform.
-.macro draw_platform_pixel (%x, %y)
-    # Colour should be specified
-    colour %x, %y, $t7
+.macro draw_platform_pixel (%x, %y, %col_reg)
+    colour %x, %y, %col_reg
     add_status %x, %y, NO_OVERLAP_MASK
 .end_macro
 # Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
 # Uses the colour specified in the register %platform_colour.
 # Modifies t registers.
 .macro draw_platform (%platform_color)
-    move $t7, %platform_color
-    apply_rect draw_platform_pixel
+    apply_rect draw_platform_pixel, %platform_color
 .end_macro
 
-# Draw all borders.
+### Level initialization
+
+# Draw a minimal set of borders to stop the player from going out-of-bounds.
 .macro draw_borders
     # Floor
-    li $a0, 240
-    li $a1, 0
-    li $a2, 4
-    li $a3, 64
+    set_rect 0, 252, 64, 1
     draw_platform CLEAR_COLOUR
-    
     # Left border
-    li $a0, 0
-    li $a1, 0
-    li $a2, 64
-    li $a3, 1
+    set_rect 0, 0, 1, 64
     draw_platform CLEAR_COLOUR
-
     # Right border
-    li $a0, 0
-    li $a1, 252
-    li $a2, 64
-    li $a3, 1
+    set_rect 252, 0, 1, 64
     draw_platform CLEAR_COLOUR
-
     # Ceiling
-    li $a0, 0
-    li $a1, 0
-    li $a2, 1
-    li $a3, 64
+    set_rect 0, 0, 64, 4
     draw_platform CLEAR_COLOUR
 .end_macro
 
@@ -359,17 +359,11 @@
     addi CUR_FRAME, CUR_FRAME, 1    # Lazy reset for last_updated_arr
 
     # Clear screen
-    li $a0, 0
-    li $a1, 0
-    li $a2, 64
-    li $a3, 64
+    set_rect 0, 0, 64, 64
     apply_rect colour, CLEAR_COLOUR
 
     # Reset grid_status_arr
-    li $a0, 0
-    li $a1, 0
-    li $a2, 64
-    li $a3, 64
+    set_rect 0, 0, 64, 64
     apply_rect remove_status, REMOVE_ALL
 
     # Reset to_clear_stack
@@ -388,25 +382,54 @@
 
 # Set data for level one.
 .macro start_level_one
-    li PLAYER_X, 8
-    li PLAYER_Y, 8
-
+    # level=1
+    # TODO - have a macro that selects levels.
+    # no need to have this here.
     la $t0, current_level
     li $t1, 1
     sw $t1, 0($t0)
 
+    # Set background
+    li CLEAR_COLOUR, SKY_BLUE
+    set_rect 0, 0, 64, 64
+    apply_rect colour, CLEAR_COLOUR
     draw_borders
 
-    li $a0, 24
-    li $a1, 64
-    draw_enemy
+    li PLAYER_X, 20
+    li PLAYER_Y, 208
 
-    li $a0, 60
-    li $a1, 0
-    li $a2, 8
-    li $a3, 64
-    li $t0, 0xff0000
-    draw_platform $t0
+    # Level-specific objects
+    # Ground
+    li $t7, DIRT
+    set_rect 0, 240, 64, 4
+    draw_platform $t7
+    # Platforms
+    li $t7, DARK_GRAY
+    set_rect 120, 164, 34, 2
+    draw_platform $t7
+    set_rect 0, 104, 22, 2
+    draw_platform $t7
+    set_rect 188, 84, 17, 2
+    draw_platform $t7
+    # Rock thing
+    li $t7, LIGHT_GRAY
+    set_rect 100, 232, 9, 2
+    draw_platform $t7
+    set_rect 104, 228, 8, 1
+    draw_platform $t7
+    set_rect 108, 224, 6, 1
+    draw_platform $t7
+    set_rect 112, 220, 4, 1
+    draw_platform $t7
+    # Enemies
+    set_rect 4, 84, 5, 5
+    draw_enemy
+    set_rect 212, 220, 5, 5
+    draw_enemy
+    set_rect 220, 144, 5, 5
+    draw_enemy
+    set_rect 204, 64, 5, 5
+    draw_enemy
 .end_macro
 
 
