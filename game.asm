@@ -75,8 +75,6 @@
     # Status masks
     .eqv NO_OVERLAP_MASK 1
     .eqv REMOVE_OVERLAP_MASK 0xfffe
-    .eqv ENEMY_MASK 2   # TODO - check if you acc need this
-    .eqv REMOVE_ENEMY_MASK 0xfffd
     .eqv PLAYER_MASK 4
     .eqv REMOVE_PLAYER_MASK 0xfffb
     .eqv REMOVE_ALL 0
@@ -388,7 +386,6 @@
     colour %x, %y, $t6
 
     done_drawing:
-    add_status %x, %y, ENEMY_MASK
     addi $t5, $t5, 4
 .end_macro
 # Draw an enemy starting at ($a0, $a1).
@@ -415,17 +412,19 @@
 
 # Set v0 to a nonzero value if (%x, %y) has %status_mask,
 # and leave it the same otherwise.
-# Modifies v1.
+# Modifies t5-t6.
 .macro has_collision_pixel (%x, %y, %status_mask)
-    check_status $v1, %x, %y, %status_mask
-    or $v0, $v0, $v1
+    check_status $t6, %x, %y, %status_mask
+    or $t5, $t5, $t6
 .end_macro
 # Check if any pixel in the given rectangle contains %status_mask.
 # v0 will be nonzero if the status was found, and it will be zero otherwise.
 # a0-a3 are specified as usual.
+# Modifies t0-t6.
 .macro has_collision (%status_mask)
-    move $v0, $zero
+    move $t5, $zero
     apply_rect has_collision_pixel %status_mask
+    move $v0, $t5
 .end_macro
 
 ## Object management
@@ -697,6 +696,10 @@ update_objects:
         lbu $a2, 4($s0)
         lbu $a3, 4($s0)
         has_collision PLAYER_MASK
+
+        move $t0, $v0
+        print_int $v0
+        move $v0, $t0
 
         ## Type-specific logic
 
