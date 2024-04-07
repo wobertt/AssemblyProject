@@ -106,16 +106,17 @@
     to_clear_stack: .space 16384    # Stores addresses to locations on screen that should be cleared.
     to_clear_stack_size: .word 0
 
-    player_hex_arr: .word 0xff22b14c, 0xee22b14c, 0x0022b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+    player_hex_arr: .word 0x22b14c, 0x22b14c, 0x0022b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
+    player_hurt_hex_arr: .word 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
     enemy_hex_arr: .word 0x990030, 0x0, 0x0, 0x0, 0x990030, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0x1, 0xed1c24, 0x1, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
-
 
     newline_str: .asciiz "\n"
 
-    player_info: .word 0 0 0 2 3
+    player_info: .word 0 0 0 2 3 0
     # xvel (0), yvel (4),
     # jump_end (8), jumps_remaining (12),
     # health_remaining (16)
+    # hurt_frame (20)
 
     # TODO - update OBJ_SIZE_POW as needed
     object_arr: .space 16384
@@ -361,7 +362,15 @@
     move $a1, PLAYER_X
     li $a2, PLAYER_HEIGHT
     li $a3, PLAYER_WIDTH
-    la $t5, player_hex_arr
+    # Choose colour array based on last hurt frame
+    la $t0, player_info
+    lw $t0, 20($t0)
+    load_normal_player: beq $t0, CUR_FRAME, load_hurt_player
+        la $t5, player_hex_arr
+        j continue_draw_player
+    load_hurt_player:
+        la $t5, player_hurt_hex_arr
+    continue_draw_player:
     draw_from_hex_arr $t5
 
     move $a0, PLAYER_Y
@@ -412,19 +421,17 @@
 
 # Set v0 to a nonzero value if (%x, %y) has %status_mask,
 # and leave it the same otherwise.
-# Modifies t5-t6.
+# Modifies v1.
 .macro has_collision_pixel (%x, %y, %status_mask)
-    check_status $t6, %x, %y, %status_mask
-    or $t5, $t5, $t6
+    check_status $v1, %x, %y, %status_mask
+    or $v0, $v0, $v1
 .end_macro
 # Check if any pixel in the given rectangle contains %status_mask.
 # v0 will be nonzero if the status was found, and it will be zero otherwise.
 # a0-a3 are specified as usual.
-# Modifies t0-t6.
 .macro has_collision (%status_mask)
-    move $t5, $zero
+    move $v0, $zero
     apply_rect has_collision_pixel %status_mask
-    move $v0, $t5
 .end_macro
 
 ## Object management
@@ -473,6 +480,8 @@
     beq $v0, $zero, kill_enemy  # v0 = 0 means no side collision
     player_hurt:
         add_health (-1)
+        la $t1, player_info
+        sw CUR_FRAME, 20($t1)
     kill_enemy:
         lbu $a0, 3($s0)
         lbu $a1, 2($s0)
@@ -623,8 +632,8 @@ main:
 main_loop:
     addi CUR_FRAME, CUR_FRAME, 1
 
-    mark_player_for_clear
     jal update_objects
+    mark_player_for_clear
     jal check_keypress
     jal get_yvel_from_jump
     jal apply_movement
@@ -696,10 +705,6 @@ update_objects:
         lbu $a2, 4($s0)
         lbu $a3, 4($s0)
         has_collision PLAYER_MASK
-
-        move $t0, $v0
-        print_int $v0
-        move $v0, $t0
 
         ## Type-specific logic
 

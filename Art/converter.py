@@ -24,7 +24,7 @@ if VERBOSE:
 im = Image.open(FILENAME)
 width, height = im.size
 if VERBOSE:
-        print(f'{width=} {height=}')
+    print(f'{width=} {height=}')
 
 
 # Convert to instructions
