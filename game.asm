@@ -77,6 +77,8 @@
     .eqv REMOVE_OVERLAP_MASK 0xfffe
     .eqv ENEMY_MASK 2
     .eqv REMOVE_ENEMY_MASK 0xfffd
+    .eqv PLAYER_MASK 4
+    .eqv REMOVE_PLAYER_MASK 0xfffb
     .eqv REMOVE_ALL 0
 
     # Colours
@@ -142,11 +144,22 @@
 .end_macro
 
 # Write the contents of %col_reg to the screen at pixels (%x, %y).
-# Modifies $t8.
+# Modifies t8.
 .macro colour (%x, %y, %col_reg)
     to_address $t8, BASE_ADR, %x, %y
     sw %col_reg, 0($t8)
 .end_macro
+
+# Write the colour specified at %col_adr to (%x, %y),
+# then increment to the next address.
+# Modifies t8-t9.
+.macro colour_address_and_increment(%x, %y, %col_adr)
+    to_address $t8, BASE_ADR, %x, %y
+    lw $t9, 0(%col_adr)
+    sw $t9, 0($t8)
+    addi %col_adr, %col_adr, 4
+.end_macro
+
 
 ### Grid status macros
 
@@ -256,7 +269,6 @@
     sll $t3, $a3, 2
     add $t3, $t3, $t1   # t3 = 4 + max_x
     
-
     loop_y: bge $t0, $t2, done_loop_y
 
         move $t4, $t1
@@ -282,7 +294,6 @@
     sll $t3, $a3, 2
     add $t3, $t3, $t1   # t3 = 4 + max_x
     
-
     loop_y: bge $t0, $t2, done_loop_y
 
         move $t4, $t1
@@ -296,6 +307,13 @@
         addi $t0, $t0, 4
         j loop_y
     done_loop_y:
+.end_macro
+
+# Draw an object with $a0-$a3 specified as usual,
+# and the start of the colour array stored in %col_arr.
+# t0-t4, t6, t8 will be modified. The convention is %col_arr = $t5.
+.macro draw_from_hex_arr (%col_arr)
+    apply_rect colour_address_and_increment %col_arr
 .end_macro
 
 # Mark the current pixel (%x, %y) for clearing.
@@ -312,25 +330,45 @@
     sw $t8, 0($t9)
 .end_macro
 
-
 # Mark the current player's location for clearing.
-# Modifies t0-t5, t8-t9.
+# This also removes the player status from the cleared pixels.
+# Modifies t0-t4, t8-t9.
 .macro mark_player_for_clear
     move $a0, PLAYER_Y
     move $a1, PLAYER_X
     li $a2, PLAYER_HEIGHT
     li $a3, PLAYER_WIDTH
     apply_rect mark_pixel_for_clear
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    apply_rect remove_status REMOVE_PLAYER_MASK
+.end_macro
+
+# Mark the current pixel as being updated this frame,
+# so it won't be cleared.
+# Modifies t8.
+.macro mark_pixel_no_clear (%x, %y)
+    la $t9, last_updated_arr
+    to_address $t8, $t9, %x, %y
+    sw CUR_FRAME 0($t8)
 .end_macro
 
 # Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
-# Modifies $ra.
 .macro draw_player
-    to_address $a0, BASE_ADR, PLAYER_X, PLAYER_Y
-    la $a1, player_hex_arr
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
     li $a2, PLAYER_HEIGHT
     li $a3, PLAYER_WIDTH
-    jal draw_rectangle
+    la $t5, player_hex_arr
+    draw_from_hex_arr $t5
+    
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    apply_rect mark_pixel_no_clear
 .end_macro
 
 # Draw an enemy pixel at (%x, %y).
@@ -586,43 +624,6 @@ clear_from_stack:
         sw $zero, 0($t1)    # Set stack size = 0
     jr $ra
 
-
-
-# Draw the rectangle starting at the address $a0, with height = $a2, width = $a3.
-# The address of the start of the colour array should be in $a1.
-# Modifies $t0-$t8.
-draw_rectangle:
-    move $t0, $a0
-    move $t1, $a1
-    move $t2, $a2
-    move $t3, $a3
-
-    la $t8, last_updated_arr    # Offset for last_updated_arr
-    sub $t8, $t8, BASE_ADR
- 
-    for_outer_drect: blez $t2, done_outer_drect
-        move $t4, $t0   # Address for this row
-        
-        move $t5, $t3   # Counter for inner loop
-        for_inner_drect: blez $t5, done_inner_drect
-            # Draw (all drawing stuff is here)
-            lw $t6, 0($t1)  # Load colour
-            sw $t6, 0($t4)  # Draw to screen
-            add $t7, $t4, $t8
-            sw CUR_FRAME 0($t7) # Update last_updated_arr
-
-            # Increment inner
-            addi $t5, $t5, -1
-            addi $t4, $t4, 4
-            addi $t1, $t1, 4    # Colour array always increments
-            j for_inner_drect
-        done_inner_drect:
-        # Increment outer
-        addi $t2, $t2, -1
-        addi $t0, $t0, DISPLAY_WIDTH_PIXELS
-        j for_outer_drect
-    done_outer_drect:
-    jr $ra
 
 # Update all objects (redraw and check collisions).
 # Modifies t-registers.
