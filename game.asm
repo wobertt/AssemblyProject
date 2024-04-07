@@ -115,7 +115,7 @@
     player_info: .word 0 0 0 2 3 0
     # xvel (0), yvel (4),
     # jump_end (8), jumps_remaining (12),
-    # health_remaining (16)
+    # health_remaining (16),
     # hurt_frame (20)
 
     # TODO - update OBJ_SIZE_POW as needed
@@ -125,7 +125,8 @@
     # min_x (6), max_x (7)
     # TODO - remember that it's lbu not lb, except for direction
 
-    num_objects: .word 0
+    num_objects: .word 0 0 0
+    # total objects (0), enemies alive (4), coins alive (8)
 
     current_level: .word 0
     
@@ -448,7 +449,12 @@
 
     # num_objects++
     addi $t2, $t2, 1
-    sw $t2, 0($t0)  
+    sw $t2, 0($t0)
+
+    # alive_enemies++
+    lw $t3, 4($t0)
+    addi $t3, $t3, 1
+    sw $t3, 4($t0)
 
     # Populate object fields
     li $t3, 1
@@ -489,6 +495,12 @@
         lbu $a3, 4($s0)
         apply_rect mark_pixel_for_clear
         sw $zero, 0($s0)    # alive = false
+    
+    # alive_enemies--
+    la $t0, num_objects
+    lw $t1, 4($t0)
+    addi $t1, $t1, -1
+    sw $t1, 4($t0)
 .end_macro
 
 ## Healthbar 
