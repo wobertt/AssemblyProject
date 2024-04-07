@@ -88,14 +88,16 @@
     .eqv HEALTHBAR_EMPTY 0xb4b4b4
 
     # Objects/enemies
+    .eqv COIN_TYPE 1
+    .eqv COIN_WIDTH 3
+
+    .eqv BASIC_ENEMY_TYPE 2
     .eqv ENEMY_HEIGHT 5
     .eqv ENEMY_WIDTH 5
+
     .eqv OBJ_SIZE 8         # struct size
     .eqv OBJ_SIZE_POW 3     # log(size)
 
-    .eqv COIN_TYPE 1
-    .eqv BASIC_ENEMY_TYPE 2
-    
 
 # --------------------- DATA --------------------- #
 .data
@@ -109,6 +111,7 @@
     player_hex_arr: .word 0x22b14c, 0x22b14c, 0x0022b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
     player_hurt_hex_arr: .word 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
     enemy_hex_arr: .word 0x990030, 0x0, 0x0, 0x0, 0x990030, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0x1, 0xed1c24, 0x1, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
+    coin_hex_arr: .word 0xfff200, 0xfff200, 0xfff200, 0xfff200, 0xffc20e, 0xfff200, 0xfff200, 0xfff200, 0xfff200
 
     newline_str: .asciiz "\n"
 
@@ -470,17 +473,49 @@
     # There are more fields, but the basic enemy doesn't use them
 .end_macro
 
+# Add a coin object at the immediate location (%pos_x, %pos_y).
+.macro add_coin_object (%pos_x, %pos_y)
+    la $t0, num_objects
+    la $t1, object_arr
+    
+    # Get offset
+    lw $t2, 0($t0)
+    sll $t3, $t2, OBJ_SIZE_POW
+    add $t1, $t1, $t3   # t1 = start of new obj struct
+
+    # num_objects++
+    addi $t2, $t2, 1
+    sw $t2, 0($t0)
+
+    # num_coins++
+    lw $t3, 8($t0)
+    addi $t3, $t3, 1
+    sw $t3, 8($t0)
+
+    # Populate object fields
+    li $t3, 1
+    sb $t3, 0($t1)  # alive = 1
+    li $t3, COIN_TYPE
+    sb $t3, 1($t1)  # type = COIN_TYPE
+    li $t3, %pos_x
+    sb $t3, 2($t1)  # pos_x = %pos_x
+    li $t3, %pos_y
+    sb $t3, 3($t1)  # pos_y = %pos_y
+    li $t3, COIN_WIDTH
+    sb $t3, 4($t1)  # length = COIN_WIDTH
+.end_macro
+
 # Update the enemy status (dead + cleared from screen)
 # and the player health after a collision.
 # %enemy_adr should contain the address of the enemy object struct.
 .macro handle_enemy_collision (%enemy_adr)
     # Check if the player collided anywhere else besides the top - if they did, reduce health
-    lbu $a0, 3($s0)
+    lbu $a0, 3(%enemy_adr)
     addi $a0, $a0, 4    # y++
-    lbu $a1, 2($s0)
-    lbu $a2, 4($s0)
+    lbu $a1, 2(%enemy_adr)
+    lbu $a2, 4(%enemy_adr)
     addi $a2, $a2, -1   # height--
-    lbu $a3, 4($s0)
+    lbu $a3, 4(%enemy_adr)
     has_collision PLAYER_MASK
 
     beq $v0, $zero, kill_enemy  # v0 = 0 means no side collision
@@ -489,18 +524,40 @@
         la $t1, player_info
         sw CUR_FRAME, 20($t1)
     kill_enemy:
-        lbu $a0, 3($s0)
-        lbu $a1, 2($s0)
-        lbu $a2, 4($s0)
-        lbu $a3, 4($s0)
+        lbu $a0, 3(%enemy_adr)
+        lbu $a1, 2(%enemy_adr)
+        lbu $a2, 4(%enemy_adr)
+        lbu $a3, 4(%enemy_adr)
         apply_rect mark_pixel_for_clear
-        sw $zero, 0($s0)    # alive = false
+        sw $zero, 0(%enemy_adr)    # alive = false
     
     # alive_enemies--
     la $t0, num_objects
     lw $t1, 4($t0)
     addi $t1, $t1, -1
     sw $t1, 4($t0)
+.end_macro
+
+# Update a coin's status (dead + cleared from screen)
+# and possibly the player's health after collision.
+# %coin_adr should contain the address of the coin object struct.
+.macro handle_coin_collision (%coin_adr)
+    lbu $a0, 3(%coin_adr)
+    lbu $a1, 2(%coin_adr)
+    lbu $a2, 4(%coin_adr)
+    lbu $a3, 4(%coin_adr)
+    apply_rect mark_pixel_for_clear
+    sw $zero, 0(%coin_adr)    # alive = false
+
+    # num_coins--
+    la $t0, num_objects
+    lw $t1, 8($t0)
+    addi $t1, $t1, -1
+    sw $t1, 8($t0)
+
+    zero_coins: bne $t1, $zero, done
+        add_health 1
+    done:
 .end_macro
 
 ## Healthbar 
@@ -633,6 +690,10 @@
     add_basic_enemy_object 212, 220
     add_basic_enemy_object 220, 144
     add_basic_enemy_object 204, 64
+    # Coins
+    add_coin_object 64, 84
+    add_coin_object 132, 144
+    add_coin_object 236, 68
 .end_macro
 
 
@@ -737,6 +798,19 @@ update_objects:
             j increment
 
         if_coin: bne $t0, COIN_TYPE, increment
+            beq $v0, $zero, draw_coin
+            handle_coin_collision $s0
+            j increment
+
+            draw_coin:
+            lbu $a0, 3($s0)
+            lbu $a1, 2($s0)
+            lbu $a2, 4($s0)
+            lbu $a3, 4($s0)
+            la $t5, coin_hex_arr
+
+            apply_rect colour_address_and_increment $t5
+
             j increment
 
     increment:

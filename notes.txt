@@ -1,4 +1,9 @@
 TODO:
+- implement moving enemies
+- add multiple levels
+- implement the remaining stuff specified in the handout
+- record video
+- you're done??
 
 what do you do when resetting?
 
