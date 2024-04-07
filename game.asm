@@ -336,6 +336,8 @@
     apply_rect draw_platform_pixel, %platform_color
 .end_macro
 
+## Healthbar 
+
 # Draw the healthbar.
 # Modifies t-registers.
 .macro draw_healthbar
@@ -356,6 +358,19 @@
     sub $a3, $a3, $t5
     sll $a3, $a3, 1
     apply_rect colour, $t7
+.end_macro
+
+# Add an immediate value, %amt, to the healthbar.
+# Note that the player health is capped at 5 units.
+.macro add_health (%amt)
+    la $t5, player_info
+    lw $t6, 16($t5)
+    addi $t6, $t6, %amt
+
+    limit_health: ble $t6, 5, set_health
+        li $t6, 5
+    set_health:
+        sw $t6, 16($t5)
 .end_macro
 
 ### Level initialization
@@ -627,8 +642,12 @@ check_keypress:
         li $t2, 4
         j done_keypress
     
-    r_keypress: bne $t0, 114, q_keypress
-        j main # TODO - reset
+    r_keypress: bne $t0, 114, h_keypress
+        j main  # Reset
+    
+    h_keypress: bne $t0, 104, q_keypress
+        add_health 1
+        j done_keypress
 
     q_keypress: bne $t0, 113, done_keypress
         # Exit the game
