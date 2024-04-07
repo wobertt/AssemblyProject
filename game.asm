@@ -36,8 +36,6 @@
 
 # --------------------- CONSTANTS --------------------- #
 .text
-# You have 18 registers, 8 saved and 10 temporary.
-
     # Stored in pixel format (always a multiple of 4).
     .eqv PLAYER_X $s0
     .eqv PLAYER_Y $s1
@@ -51,7 +49,8 @@
     .eqv CLEAR_COLOUR $s4
     li CLEAR_COLOUR, 0x0
 
-    .eqv CLEAR_STACK_ADR $s5    # Stores 4 + the address of the last element.
+    # Grows in + direction; stores 4 + the address of the last element.
+    .eqv CLEAR_STACK_ADR $s5    
 
     .eqv KEY_ADR $s6
     li KEY_ADR, 0xffff0000
@@ -61,21 +60,19 @@
 
 
 # Numeric constants
+    # Player
     .eqv PLAYER_WIDTH 8
     .eqv PLAYER_HEIGHT 8
     .eqv MIN_PLAYER_X 0
     .eqv MIN_PLAYER_Y 0
     .eqv MAX_PLAYER_X 224
     .eqv MAX_PLAYER_Y 224
-
     .eqv JUMP_HEIGHT 12
 
-    .eqv ENEMY_HEIGHT 5
-    .eqv ENEMY_WIDTH 5
-
+    # Display
     .eqv DISPLAY_WIDTH_PIXELS 256
 
-    # Status mask constants - should be powers of two
+    # Status masks
     .eqv NO_OVERLAP_MASK 1
     .eqv REMOVE_OVERLAP_MASK 0xfffe
     .eqv ENEMY_MASK 2
@@ -89,6 +86,16 @@
     .eqv LIGHT_GRAY 0xb4b4b4
     .eqv HEALTHBAR_FULL 0x22b14c
     .eqv HEALTHBAR_EMPTY 0xb4b4b4
+
+    # Objects/enemies
+    .eqv ENEMY_HEIGHT 5
+    .eqv ENEMY_WIDTH 5
+    .eqv OBJ_SIZE 8 # struct size
+    .eqv OBJ_SIZE_POW 3  # log(size)
+
+    .eqv COIN_TYPE 1
+    .eqv BASIC_ENEMY_TYPE 2
+    
 
 # --------------------- DATA --------------------- #
 .data
@@ -109,6 +116,15 @@
     # xvel (0), yvel (4),
     # jump_end (8), jumps_remaining (12),
     # health_remaining (16)
+
+    # TODO - update OBJ_SIZE_POW as needed
+    object_arr: .space 16384
+    # alive/dead (0), object_type (1),
+    # pos_x (2), pos_y (3), obj_length (4), direction (5), 
+    # min_x (6), max_x (7)
+    # remember - lbu not lb, except for direction
+
+    num_objects: .word 0
 
     current_level: .word 0
     
@@ -316,6 +332,7 @@
     addi $t5, $t5, 4
 .end_macro
 # Draw an enemy starting at ($a0, $a1).
+# Modifies t0-t6, t8.
 .macro draw_enemy
     la $t5, enemy_hex_arr
     li $a2, ENEMY_HEIGHT
@@ -334,6 +351,36 @@
 # Modifies t-registers.
 .macro draw_platform (%platform_color)
     apply_rect draw_platform_pixel, %platform_color
+.end_macro
+
+## Object management
+
+# Add a basic enemy object at the immediate location (%pos_x, %pos_y).
+.macro add_basic_enemy_object (%pos_x, %pos_y)
+    la $t0, num_objects
+    la $t1, object_arr
+    
+    # Get offset
+    lw $t2, 0($t0)
+    sll $t3, $t2, OBJ_SIZE_POW
+    add $t1, $t1, $t3   # t1 = start of new obj struct
+
+    # num_objects++
+    addi $t2, $t2, 1
+    sw $t2, 0($t0)  
+
+    # Populate object fields
+    li $t3, 1
+    sb $t3, 0($t1)  # alive = 1
+    li $t3, BASIC_ENEMY_TYPE
+    sb $t3, 1($t1)  # type = BASIC_ENEMY_TYPE
+    li $t3, %pos_x
+    sb $t3, 2($t1)  # pos_x = %pos_x
+    li $t3, %pos_y
+    sb $t3, 3($t1)  # pos_y = %pos_y
+    li $t3, ENEMY_WIDTH
+    sb $t3, 4($t1)  # length = 5
+    # There are more fields, but the basic enemy doesn't use them
 .end_macro
 
 ## Healthbar 
@@ -462,14 +509,10 @@
     set_rect 112, 220, 4, 1
     draw_platform $t7
     # Enemies
-    set_rect 4, 84, 5, 5
-    draw_enemy
-    set_rect 212, 220, 5, 5
-    draw_enemy
-    set_rect 220, 144, 5, 5
-    draw_enemy
-    set_rect 204, 64, 5, 5
-    draw_enemy
+    add_basic_enemy_object 4, 84
+    add_basic_enemy_object 212, 220
+    add_basic_enemy_object 220, 144
+    add_basic_enemy_object 204, 64
 .end_macro
 
 
@@ -482,6 +525,7 @@ main_loop:
     addi CUR_FRAME, CUR_FRAME, 1
 
     mark_player_for_clear
+    jal update_objects
     jal check_keypress
     jal get_yvel_from_jump
     jal apply_movement
@@ -612,6 +656,52 @@ draw_rectangle:
         j for_outer_drect
     done_outer_drect:
     jr $ra
+
+# Update all objects (redraw and check collisions).
+# Modifies t-registers.
+update_objects:
+    sw $s0, -4($sp)
+    sw $s1, -8($sp)
+    sw $s6, -12($sp)
+    addi $sp, $sp, -12
+
+    la $s0, object_arr
+    la $s1, num_objects
+    lw $s1, 0($s1)
+    sll $s1, $s1, OBJ_SIZE_POW
+    add $s1, $s1, $s0
+    # for (s0 = &obj_arr[0]; s0 < s1; s0 += sizeof(obj struct))
+
+    for_objects: bge $s0, $s1, done_for_objects
+        # decide if we need to kill the object
+        # if we don't, redraw it at the correct spot
+        lbu $t0, 0($s0) # alive
+        beq $t0, $zero, increment
+
+
+        # Set dimensions for drawing
+        lbu $a0, 3($s0)
+        lbu $a1, 2($s0)
+        lbu $a2, 4($s0)
+        lbu $a3, 4($s0)
+
+        lbu $t0, 1($s0) # obj type
+        if_basic_enemy: bne $t0, BASIC_ENEMY_TYPE, if_coin
+            draw_enemy  # Overwrites t0-t6, t8!!
+            j increment
+        if_coin: bne $t0, COIN_TYPE, increment
+        
+
+    increment:
+        addi $s0, $s0, OBJ_SIZE
+        j for_objects
+    done_for_objects:
+    addi $sp, $sp, 12
+    lw $s0, -4($sp)
+    lw $s1, -8($sp)
+    lw $s6, -12($sp)
+    jr $ra
+
 
 # Check for all keypresses and handle them accordingly.
 # Modifies t-registers.
