@@ -105,8 +105,10 @@
 
     newline_str: .asciiz "\n"
 
-    player_info: .word 0 0 0 2
-    # struct - xvel, yvel, jump_end, jumps_remaining
+    player_info: .word 0 0 0 2 3
+    # xvel, yvel,
+    # jump_end, jumps_remaining,
+    # health_remaining
 
     current_level: .word 0
     
@@ -194,7 +196,6 @@
     li $v0, 4
     syscall
 .end_macro
-
 
 # Store the current keypress in %s, if possible.
 # If no key was pressed, 0 is stored.
@@ -330,9 +331,31 @@
 .end_macro
 # Draw a platform at the rectangle starting at ($a0, $a1), with height=$a2, width=$a3.
 # Uses the colour specified in the register %platform_colour.
-# Modifies t registers.
+# Modifies t-registers.
 .macro draw_platform (%platform_color)
     apply_rect draw_platform_pixel, %platform_color
+.end_macro
+
+# Draw the healthbar.
+# Modifies t-registers.
+.macro draw_healthbar
+    la $t5, player_info
+    lw $t5, 16($t5) # t5 = health
+
+    li $t7, HEALTHBAR_FULL
+    set_rect 12, 12, 0, 2   
+    sll $a3, $t5, 1 # width = health*2
+    apply_rect colour, $t7
+
+    li $t7, HEALTHBAR_EMPTY
+    set_rect 0, 12, 5, 2
+    # xleft = 12 + health*8
+    sll $a1, $t5, 3
+    addi $a1, $a1, 12
+    # width = (5-health)*2
+    sub $a3, $a3, $t5
+    sll $a3, $a3, 1
+    apply_rect colour, $t7
 .end_macro
 
 ### Level initialization
@@ -378,6 +401,8 @@
     sw $zero, 8($t0)
     li $t1, 2
     sw $t1, 12($t0)
+    li $t1, 3
+    sw $t1, 16($t0)
 .end_macro
 
 # Set data for level one.
@@ -446,6 +471,7 @@ main_loop:
     jal get_yvel_from_jump
     jal apply_movement
     draw_player
+    draw_healthbar
     jal clear_from_stack
 
     sleep 30
