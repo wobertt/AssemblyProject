@@ -39,6 +39,7 @@ Milestone 4:
 - multiple levels
 - enemies shoot you
 - double jump
+*in the video, mention that you can only jump once once you're already in the air
 
 
 
@@ -52,3 +53,5 @@ Order of events:
 
 
 TODO: credit benchislett
+
+TODO: in the video, mention that you can add health with H

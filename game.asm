@@ -106,9 +106,9 @@
     newline_str: .asciiz "\n"
 
     player_info: .word 0 0 0 2 3
-    # xvel, yvel,
-    # jump_end, jumps_remaining,
-    # health_remaining
+    # xvel (0), yvel (4),
+    # jump_end (8), jumps_remaining (12),
+    # health_remaining (16)
 
     current_level: .word 0
     
@@ -680,11 +680,22 @@ get_yvel_from_jump:
     jr $ra
 
 # Move the player based on player_info.
-# This does collision and out-of-bounds checking.
+# This does collision and out-of-bounds checking,
+# and updates the number of available jumps.
 # Modifies t-registers.
 apply_movement:
 
     la $t1, player_info
+
+    # The player can only jump once if already in the air.
+    # If they're touching a platform,
+    # we'll update the allowed jumps to 2 later on.
+    lw $t0, 12($t1) # jumps remaining
+    blt $t0, 2, continue_check_movement
+    li $t0, 1
+    sw $t0, 12($t1)
+
+    continue_check_movement:
 
     lw $t2, 0($t1)  # xvel
     lw $t3, 4($t1)  # yvel
