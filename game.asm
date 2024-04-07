@@ -232,27 +232,6 @@
     syscall
 .end_macro
 
-# Mark the current player's location for clearing.
-# Modifies $ra.
-.macro mark_player_for_clear
-    move $a0, PLAYER_Y
-    move $a1, PLAYER_X
-    li $a2, PLAYER_HEIGHT
-    li $a3, PLAYER_WIDTH
-    jal mark_rectangle_for_clear
-.end_macro
-
-# Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
-# Modifies $ra.
-.macro draw_player
-    to_address $a0, BASE_ADR, PLAYER_X, PLAYER_Y
-    la $a1, player_hex_arr
-    li $a2, PLAYER_HEIGHT
-    li $a3, PLAYER_WIDTH
-    jal draw_rectangle
-.end_macro
-
-
 ### Rectangle macros
 
 # Pass the specified immediate values as function arguments
@@ -317,6 +296,41 @@
         addi $t0, $t0, 4
         j loop_y
     done_loop_y:
+.end_macro
+
+# Mark the current pixel (%x, %y) for clearing.
+# Modifies t8-t9.
+.macro mark_pixel_for_clear (%x, %y)
+    to_address $t8, BASE_ADR, %x, %y
+    sw $t8, 0(CLEAR_STACK_ADR)  # Add address to stack
+    addi CLEAR_STACK_ADR, CLEAR_STACK_ADR, 4
+
+    # Increment stack size
+    la $t9, to_clear_stack_size
+    lw $t8, 0($t9)
+    addi $t8, $t8, 1
+    sw $t8, 0($t9)
+.end_macro
+
+
+# Mark the current player's location for clearing.
+# Modifies t0-t5, t8-t9.
+.macro mark_player_for_clear
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    apply_rect mark_pixel_for_clear
+.end_macro
+
+# Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
+# Modifies $ra.
+.macro draw_player
+    to_address $a0, BASE_ADR, PLAYER_X, PLAYER_Y
+    la $a1, player_hex_arr
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    jal draw_rectangle
 .end_macro
 
 # Draw an enemy pixel at (%x, %y).
@@ -541,53 +555,6 @@ main_loop:
     li $v0, 10
     syscall
 
-
-# Mark the rectangle starting at ($a0, $a1) with height=$a2, width=$a3 for clearing.
-# a0, a1 are in pixel format, while $a2 and $a3 are in normal format.
-# Modifies $t0-$t7.
-mark_rectangle_for_clear:
-    move $t3, $a0
-    move $t4, $a1
-    move $t5, $a2
-    move $t6, $a3
-    # $t0 = increase to clear stack size
-    mul $t0, $t5, $t6
-
-    # $a2 = upper bound for $a0
-    sll $t5, $t5, 2
-    add $t5, $t5, $t3
-    # a3 = upper bound for $a2
-    sll $t6, $t6, 2
-    add $t6, $t6, $t4
-
-    for_outer_mrect: bge $t3, $t5, done_mrect
-        move $t7, $t4   # Inner looping variable
-        for_inner_mrect: bge $t7, $t6, done_inner_mrect
-            # $t1 = actual address of pixel
-            # (t3, t7) -> t3 * 64 + t7
-            sll $t1, $t3, 6
-            add $t1, $t1, $t7
-            add $t1, $t1, BASE_ADR
-            # Push actual address to be cleared to the stack.
-            sw $t1, 0(CLEAR_STACK_ADR)
-
-            addi CLEAR_STACK_ADR, CLEAR_STACK_ADR, 4
-
-            addi $t7, $t7, 4
-        j for_inner_mrect
-
-        done_inner_mrect:
-        addi $t3, $t3, 4
-    j for_outer_mrect
-    
-    done_mrect:
-        # Update stack size (add $t0)
-        la $t2, to_clear_stack_size
-        lw $t1, 0($t2)
-        add $t1, $t1, $t0
-        sw $t1, 0($t2)
-    jr $ra
-
 # Clear all addresses specified in to_clear_stack.
 # Modifies t-registers.
 clear_from_stack:
@@ -673,10 +640,10 @@ update_objects:
     # for (s0 = &obj_arr[0]; s0 < s1; s0 += sizeof(obj struct))
 
     for_objects: bge $s0, $s1, done_for_objects
-        # decide if we need to kill the object
-        # if we don't, redraw it at the correct spot
+        # Decide if we need to kill the object
+        # If we don't, redraw it at the correct spot
         lbu $t0, 0($s0) # alive
-        beq $t0, $zero, increment
+        beq $t0, $zero, increment   # don't draw dead enemies
 
 
         # Set dimensions for drawing
@@ -695,12 +662,13 @@ update_objects:
     increment:
         addi $s0, $s0, OBJ_SIZE
         j for_objects
+    
     done_for_objects:
-    addi $sp, $sp, 12
-    lw $s0, -4($sp)
-    lw $s1, -8($sp)
-    lw $s6, -12($sp)
-    jr $ra
+        addi $sp, $sp, 12
+        lw $s0, -4($sp)
+        lw $s1, -8($sp)
+        lw $s6, -12($sp)
+        jr $ra
 
 
 # Check for all keypresses and handle them accordingly.
