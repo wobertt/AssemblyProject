@@ -75,7 +75,7 @@
     # Status masks
     .eqv NO_OVERLAP_MASK 1
     .eqv REMOVE_OVERLAP_MASK 0xfffe
-    .eqv ENEMY_MASK 2
+    .eqv ENEMY_MASK 2   # TODO - check if you acc need this
     .eqv REMOVE_ENEMY_MASK 0xfffd
     .eqv PLAYER_MASK 4
     .eqv REMOVE_PLAYER_MASK 0xfffb
@@ -92,8 +92,8 @@
     # Objects/enemies
     .eqv ENEMY_HEIGHT 5
     .eqv ENEMY_WIDTH 5
-    .eqv OBJ_SIZE 8 # struct size
-    .eqv OBJ_SIZE_POW 3  # log(size)
+    .eqv OBJ_SIZE 8         # struct size
+    .eqv OBJ_SIZE_POW 3     # log(size)
 
     .eqv COIN_TYPE 1
     .eqv BASIC_ENEMY_TYPE 2
@@ -124,7 +124,7 @@
     # alive/dead (0), object_type (1),
     # pos_x (2), pos_y (3), obj_length (4), direction (5), 
     # min_x (6), max_x (7)
-    # remember - lbu not lb, except for direction
+    # TODO - remember that it's lbu not lb, except for direction
 
     num_objects: .word 0
 
@@ -356,6 +356,8 @@
 .end_macro
 
 # Draw the player with top-left pixels (PLAYER_X, PLAYER_Y).
+# In addition to the actual drawing, this marks the player pixels as no-clear
+# and adds PLAYER_MASK.
 .macro draw_player
     move $a0, PLAYER_Y
     move $a1, PLAYER_X
@@ -363,12 +365,18 @@
     li $a3, PLAYER_WIDTH
     la $t5, player_hex_arr
     draw_from_hex_arr $t5
-    
+
     move $a0, PLAYER_Y
     move $a1, PLAYER_X
     li $a2, PLAYER_HEIGHT
     li $a3, PLAYER_WIDTH
     apply_rect mark_pixel_no_clear
+    
+    move $a0, PLAYER_Y
+    move $a1, PLAYER_X
+    li $a2, PLAYER_HEIGHT
+    li $a3, PLAYER_WIDTH
+    apply_rect add_status PLAYER_MASK
 .end_macro
 
 # Draw an enemy pixel at (%x, %y).
@@ -405,6 +413,21 @@
     apply_rect draw_platform_pixel, %platform_color
 .end_macro
 
+# Set v0 to a nonzero value if (%x, %y) has %status_mask,
+# and leave it the same otherwise.
+# Modifies v1.
+.macro has_collision_pixel (%x, %y, %status_mask)
+    check_status $v1, %x, %y, %status_mask
+    or $v0, $v0, $v1
+.end_macro
+# Check if any pixel in the given rectangle contains %status_mask.
+# v0 will be nonzero if the status was found, and it will be zero otherwise.
+# a0-a3 are specified as usual.
+.macro has_collision (%status_mask)
+    move $v0, $zero
+    apply_rect has_collision_pixel %status_mask
+.end_macro
+
 ## Object management
 
 # Add a basic enemy object at the immediate location (%pos_x, %pos_y).
@@ -433,6 +456,31 @@
     li $t3, ENEMY_WIDTH
     sb $t3, 4($t1)  # length = 5
     # There are more fields, but the basic enemy doesn't use them
+.end_macro
+
+# Update the enemy status (dead + cleared from screen)
+# and the player health after a collision.
+# %enemy_adr should contain the address of the enemy object struct.
+.macro handle_enemy_collision (%enemy_adr)
+    # Check if the player collided anywhere else besides the top - if they did, reduce health
+    lbu $a0, 3($s0)
+    addi $a0, $a0, 4    # y++
+    lbu $a1, 2($s0)
+    lbu $a2, 4($s0)
+    addi $a2, $a2, -1   # height--
+    lbu $a3, 4($s0)
+    has_collision PLAYER_MASK
+
+    beq $v0, $zero, kill_enemy  # v0 = 0 means no side collision
+    player_hurt:
+        add_health (-1)
+    kill_enemy:
+        lbu $a0, 3($s0)
+        lbu $a1, 2($s0)
+        lbu $a2, 4($s0)
+        lbu $a3, 4($s0)
+        apply_rect mark_pixel_for_clear
+        sw $zero, 0($s0)    # alive = false
 .end_macro
 
 ## Healthbar 
@@ -623,8 +671,6 @@ clear_from_stack:
     done_clear_from_stack:
         sw $zero, 0($t1)    # Set stack size = 0
     jr $ra
-
-
 # Update all objects (redraw and check collisions).
 # Modifies t-registers.
 update_objects:
@@ -646,19 +692,32 @@ update_objects:
         lbu $t0, 0($s0) # alive
         beq $t0, $zero, increment   # don't draw dead enemies
 
-
-        # Set dimensions for drawing
         lbu $a0, 3($s0)
         lbu $a1, 2($s0)
         lbu $a2, 4($s0)
         lbu $a3, 4($s0)
+        has_collision PLAYER_MASK
+
+        ## Type-specific logic
 
         lbu $t0, 1($s0) # obj type
         if_basic_enemy: bne $t0, BASIC_ENEMY_TYPE, if_coin
-            draw_enemy  # Overwrites t0-t6, t8!!
+            # Only draw if they didn't collide with player
+            beq $v0, $zero, draw_basic_enemy
+            handle_enemy_collision $s0
             j increment
+
+            draw_basic_enemy:
+            lbu $a0, 3($s0)
+            lbu $a1, 2($s0)
+            lbu $a2, 4($s0)
+            lbu $a3, 4($s0)
+            draw_enemy  # Overwrites t0-t6, t8!!
+
+            j increment
+
         if_coin: bne $t0, COIN_TYPE, increment
-        
+            j increment
 
     increment:
         addi $s0, $s0, OBJ_SIZE
