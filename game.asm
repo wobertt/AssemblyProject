@@ -615,6 +615,8 @@
     draw_platform CLEAR_COLOUR
 .end_macro
 
+### Initialization 
+
 # Reset all non-level-specific data and s-registers.
 # Level-specific data should be handled separately.
 .macro reset_data
@@ -642,17 +644,17 @@
     sw $t1, 12($t0)
     li $t1, 3
     sw $t1, 16($t0)
+    sw $zero, 20($t0)
+
+    # Reset num_objects
+    la $t0, num_objects
+    sw $zero, 0($t0)
+    sw $zero, 4($t0)
+    sw $zero, 8($t0)
 .end_macro
 
 # Set data for level one.
 .macro start_level_one
-    # level=1
-    # TODO - have a macro that selects levels.
-    # no need to have this here.
-    la $t0, current_level
-    li $t1, 1
-    sw $t1, 0($t0)
-
     # Set background
     li CLEAR_COLOUR, SKY_BLUE
     set_rect 0, 0, 64, 64
@@ -696,11 +698,30 @@
     add_coin_object 236, 68
 .end_macro
 
+# Initialize data based on the value in current_level.
+.macro initialize_current_level
+    la $t0, current_level
+    lw $t0, 0($t0)
+
+    level_one: bne $t0, 1, level_two
+        start_level_one
+        j done_select
+    level_two:
+        start_level_one # TODO - update
+    
+    done_select:
+.end_macro
 
 .globl main
 main:
+    # Set to level one
+    la $t0, current_level
+    li $t1, 1
+    sw $t1, 0($t0)
+
+select_level:
     reset_data
-    start_level_one
+    initialize_current_level
 
 main_loop:
     addi CUR_FRAME, CUR_FRAME, 1
@@ -713,6 +734,7 @@ main_loop:
     draw_player
     draw_healthbar
     jal clear_from_stack
+    jal check_level_success
 
     sleep 30
 
@@ -721,6 +743,21 @@ main_loop:
     # Exit
     li $v0, 10
     syscall
+
+# Check if the player has met the win condition for the current level.
+# If they have, jump to select_level.
+check_level_success:
+    la $t0, num_objects
+    lw $t1, 4($t0)
+
+    bne $t1, $zero, no_level_success  # nonzero enemies remaining -> no success
+    level_success:
+        addi $t1, $t1, 1
+        sw $t1, 0($t0)  # current_level++
+        j select_level
+    no_level_success:
+        jr $ra
+
 
 # Clear all addresses specified in to_clear_stack.
 # Modifies t-registers.
