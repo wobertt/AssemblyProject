@@ -610,6 +610,8 @@
 # The enemy is assumed to be alive and of movable type.
 # Leaves t0 unmodified.
 .macro move_enemy (%enemy_adr)
+    andi $t1, CUR_FRAME, 1  # Only move on even frames?
+    bne $t1, $zero, no_move
 
     lbu $t1, 2(%enemy_adr)  # x
     lb $t2, 5(%enemy_adr)   # dir
@@ -624,6 +626,7 @@
         add $t1, $t1, $t2
         sb $t1, 2(%enemy_adr)
         sb $t2, 5(%enemy_adr)
+    no_move:
 .end_macro
 
 # Update the enemy status (dead + cleared from screen)
