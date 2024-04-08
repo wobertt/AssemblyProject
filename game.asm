@@ -826,6 +826,8 @@ check_level_success:
 
     bne $t1, $zero, no_level_success  # nonzero enemies remaining -> no success
     level_success:
+        la $t0, current_level
+        lw $t1, 0($t0)
         addi $t1, $t1, 1
         sw $t1, 0($t0)  # current_level++
         j select_level
