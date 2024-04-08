@@ -92,8 +92,12 @@
     .eqv COIN_WIDTH 3
 
     .eqv BASIC_ENEMY_TYPE 2
+    .eqv MOVING_ENEMY_TYPE 3
     .eqv ENEMY_HEIGHT 5
     .eqv ENEMY_WIDTH 5
+
+    .eqv BAT_ENEMY_TYPE 4
+    .eqv BAT_WIDTH 4
 
     .eqv OBJ_SIZE 8         # struct size
     .eqv OBJ_SIZE_POW 3     # log(size)
@@ -110,8 +114,11 @@
 
     player_hex_arr: .word 0x22b14c, 0x22b14c, 0x0022b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0xd3f9bc, 0xa8e61d, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0xd3f9bc, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c, 0x22b14c
     player_hurt_hex_arr: .word 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xf5e49c, 0xff7e00, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xf5e49c, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
+    
     enemy_hex_arr: .word 0x990030, 0x0, 0x0, 0x0, 0x990030, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0x1, 0xed1c24, 0x1, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24, 0xed1c24
+    bat_hex_arr: .word 0xc134a, 0x0, 0x0, 0xc134a, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x0, 0x1, 0x1, 0x0
     coin_hex_arr: .word 0xfff200, 0xfff200, 0xfff200, 0xfff200, 0xffc20e, 0xfff200, 0xfff200, 0xfff200, 0xfff200
+    
     gameover_hex_arr: .word 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0xffffff, 0x0, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0x0, 0xffffff, 0x0, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0x0, 0xffffff, 0x0, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0x0, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0x0, 0xffffff, 0xffffff, 0xffffff, 0x0, 0x0, 0x0, 0xffffff, 0x0, 0xffffff, 0xffffff, 0x0
     gray_star_hex_arr: .word 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xbabab3, 0xbabab3, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff
     yellow_star_hex_arr: .word 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffc20e, 0xffc20e, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff, 0xffffff
@@ -399,18 +406,29 @@
 .macro draw_enemy_pixel (%x, %y)
     lw $t6, 0($t5)  # col
     
-    beq $t6, $zero, done_drawing    # 0x0 is "transparent"; don't draw
-    colour %x, %y, $t6
-
+    bne $t6, $zero, normal_draw
+    background_draw:     # 0x0 is "transparent"
+        colour %x, %y, CLEAR_COLOUR
+        j done_drawing
+    normal_draw:
+        colour %x, %y, $t6
     done_drawing:
+    mark_pixel_no_clear %x, %y
     addi $t5, $t5, 4
 .end_macro
 # Draw an enemy starting at ($a0, $a1).
+# %t should contain the enemy type.
 # Modifies t0-t6, t8.
-.macro draw_enemy
-    la $t5, enemy_hex_arr
-    li $a2, ENEMY_HEIGHT
-    li $a3, ENEMY_WIDTH
+.macro draw_enemy (%t)
+    load_basic_enemy: bne %t, BASIC_ENEMY_TYPE, load_moving_enemy
+        la $t5, enemy_hex_arr
+        j draw_enemy_sub
+    load_moving_enemy: bne %t, MOVING_ENEMY_TYPE, load_bat_enemy
+        la $t5, enemy_hex_arr
+        j draw_enemy_sub
+    load_bat_enemy: bne %t, BAT_ENEMY_TYPE, draw_enemy_sub
+        la $t5, bat_hex_arr
+    draw_enemy_sub:
     apply_rect draw_enemy_pixel
 .end_macro
 
@@ -507,6 +525,105 @@
     sb $t3, 3($t1)  # pos_y = %pos_y
     li $t3, COIN_WIDTH
     sb $t3, 4($t1)  # length = COIN_WIDTH
+.end_macro
+
+# Add a moving enemy object at (%pos_x, %pos_y).
+# %dir should be -4 or 4 (left or right).
+# %min_x and %max_x should be the bounds for the x-value of the top-left pixel.
+.macro add_moving_enemy_object (%pos_x, %pos_y, %dir, %min_x, %max_x)
+    la $t0, num_objects
+    la $t1, object_arr
+    
+    # Get offset
+    lw $t2, 0($t0)
+    sll $t3, $t2, OBJ_SIZE_POW
+    add $t1, $t1, $t3   # t1 = start of new obj struct
+
+    # num_objects++
+    addi $t2, $t2, 1
+    sw $t2, 0($t0)
+
+    # alive_enemies++
+    lw $t3, 4($t0)
+    addi $t3, $t3, 1
+    sw $t3, 4($t0)
+
+    # Populate object fields
+    li $t3, 1
+    sb $t3, 0($t1)  # alive = 1
+    li $t3, MOVING_ENEMY_TYPE
+    sb $t3, 1($t1)  # type = MOVING_ENEMY_TYPE
+    li $t3, %pos_x
+    sb $t3, 2($t1)  # pos_x = %pos_x
+    li $t3, %pos_y
+    sb $t3, 3($t1)  # pos_y = %pos_y
+    li $t3, ENEMY_WIDTH
+    sb $t3, 4($t1)  # length = 5
+    li $t3, %dir
+    sb $t3, 5($t1)
+    li $t3, %min_x
+    sb $t3, 6($t1)
+    li $t3, %max_x
+    sb $t3, 7($t1)
+.end_macro
+# Add a bat object at (%pos_x, %pos_y).
+# %dir should be -4 or 4 (left or right).
+# %min_x and %max_x should be the bounds for the x-value of the top-left pixel.
+.macro add_bat_object (%pos_x, %pos_y, %dir, %min_x, %max_x)
+    la $t0, num_objects
+    la $t1, object_arr
+    
+    # Get offset
+    lw $t2, 0($t0)
+    sll $t3, $t2, OBJ_SIZE_POW
+    add $t1, $t1, $t3   # t1 = start of new obj struct
+
+    # num_objects++
+    addi $t2, $t2, 1
+    sw $t2, 0($t0)
+
+    # alive_enemies++
+    lw $t3, 4($t0)
+    addi $t3, $t3, 1
+    sw $t3, 4($t0)
+
+    # Populate object fields
+    li $t3, 1
+    sb $t3, 0($t1)  # alive = 1
+    li $t3, BAT_ENEMY_TYPE
+    sb $t3, 1($t1)  # type = BAT_ENEMY_TYPE
+    li $t3, %pos_x
+    sb $t3, 2($t1)  # pos_x = %pos_x
+    li $t3, %pos_y
+    sb $t3, 3($t1)  # pos_y = %pos_y
+    li $t3, BAT_WIDTH
+    sb $t3, 4($t1)  # length = BAT_WIDTH
+    li $t3, %dir
+    sb $t3, 5($t1)
+    li $t3, %min_x
+    sb $t3, 6($t1)
+    li $t3, %max_x
+    sb $t3, 7($t1)
+.end_macro
+
+# Move the enemy at address %enemy_adr.
+# The enemy is assumed to be alive and of movable type.
+# Leaves t0 unmodified.
+.macro move_enemy (%enemy_adr)
+
+    lbu $t1, 2(%enemy_adr)  # x
+    lb $t2, 5(%enemy_adr)   # dir
+    lbu $t3, 6(%enemy_adr)  # min_x
+    lbu $t4, 7(%enemy_adr)  # max_x
+
+    turn_right: bne $t1, $t3, turn_left
+        li $t2, 4
+    turn_left: bne $t1, $t4, update_x
+        li $t2, -4
+    update_x:
+        add $t1, $t1, $t2
+        sb $t1, 2(%enemy_adr)
+        sb $t2, 5(%enemy_adr)
 .end_macro
 
 # Update the enemy status (dead + cleared from screen)
@@ -696,6 +813,9 @@
     add_basic_enemy_object 212, 220
     add_basic_enemy_object 220, 144
     add_basic_enemy_object 204, 64
+
+    # add_moving_enemy_object 24, 168, 4, 24, 88
+    add_bat_object 24, 168, 4, 24, 88
     # Coins
     add_coin_object 64, 84
     add_coin_object 132, 144
@@ -772,6 +892,7 @@
 
 .globl main
 main:
+
     # Set to level one
     la $t0, current_level
     li $t1, 1
@@ -895,22 +1016,7 @@ update_objects:
         ## Type-specific logic
 
         lbu $t0, 1($s0) # obj type
-        if_basic_enemy: bne $t0, BASIC_ENEMY_TYPE, if_coin
-            # Only draw if they didn't collide with player
-            beq $v0, $zero, draw_basic_enemy
-            handle_enemy_collision $s0
-            j increment
-
-            draw_basic_enemy:
-            lbu $a0, 3($s0)
-            lbu $a1, 2($s0)
-            lbu $a2, 4($s0)
-            lbu $a3, 4($s0)
-            draw_enemy  # Overwrites t0-t6, t8!!
-
-            j increment
-
-        if_coin: bne $t0, COIN_TYPE, increment
+        if_coin: bne $t0, COIN_TYPE, enemy_logic
             beq $v0, $zero, draw_coin
             handle_coin_collision $s0
             j increment
@@ -925,7 +1031,38 @@ update_objects:
             apply_rect colour_address_and_increment $t5
 
             j increment
+        
+        enemy_logic:
+        # General enemy collision check
+        beq $v0, $zero, clear_old_enemy
+        handle_enemy_collision $s0
+        j increment
 
+        clear_old_enemy:
+        # Clear the old enemy pos
+        sw $t0, -4($sp)
+        addi $sp, $sp, -4
+        lbu $a0, 3($s0)
+        lbu $a1, 2($s0)
+        lbu $a2, 4($s0)
+        lbu $a3, 4($s0)
+        apply_rect mark_pixel_for_clear
+        lw $t0, 0($sp)
+        addi $sp, $sp, 4
+        
+
+        # Apply movement if necessary
+        check_basic_enemy: beq $t0, BASIC_ENEMY_TYPE, no_movement
+        # only non-basic enemies move
+        move_enemy $s0
+        
+        no_movement:
+        # Draw enemy
+        lbu $a0, 3($s0)
+        lbu $a1, 2($s0)
+        lbu $a2, 4($s0)
+        lbu $a3, 4($s0)
+        draw_enemy $t0
     increment:
         addi $s0, $s0, OBJ_SIZE
         j for_objects
