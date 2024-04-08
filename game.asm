@@ -81,9 +81,12 @@
 
     # Colours
     .eqv SKY_BLUE 0x99d9ea
+    .eqv DIRT 0x9c5a3c
+    .eqv DARK_ROCK 0x232323
+    .eqv TREE_BARK 0x422214
+    .eqv DARK_GREEN 0x0a4d1d
     .eqv CAVE_BACKGROUND 0x524f49
     .eqv CAVE_PLATFORM 0x1f1a1c
-    .eqv DIRT 0x9c5a3c
     .eqv DARK_GRAY 0x464646
     .eqv LIGHT_GRAY 0xb4b4b4
     .eqv HEALTHBAR_FULL 0x22b14c
@@ -824,8 +827,55 @@
     add_coin_object 132, 144
     add_coin_object 236, 68
 .end_macro
-# Set data for level two.
 .macro start_level_two
+    # Set background
+    li CLEAR_COLOUR, DARK_GRAY
+    set_rect 0, 0, 64, 64
+    apply_rect colour, CLEAR_COLOUR
+    draw_borders
+
+    li PLAYER_X, 12
+    li PLAYER_Y, 208
+
+    # Level-specific objects
+    # Ground
+    li $t7, DARK_GREEN
+    set_rect 0, 240, 64, 4
+    draw_platform $t7
+    # Platforms
+    li $t7, DARK_GREEN
+    set_rect 0, 80, 8, 2
+    draw_platform $t7
+    set_rect 44, 136, 20, 2
+    draw_platform $t7
+    # Rock
+    li $t7, DARK_ROCK
+    set_rect 132, 224, 11, 4
+    draw_platform $t7
+    set_rect 136, 216, 9, 2
+    draw_platform $t7
+    # Tree
+    li $t7, TREE_BARK
+    set_rect 200, 184, 4, 14
+    draw_platform $t7
+    li $t7, DARK_GREEN
+    set_rect 184, 156, 12, 7
+    draw_platform $t7
+    set_rect 200, 148, 4, 2
+    draw_platform $t7
+    # Enemies
+    add_basic_enemy_object 144, 196
+    add_bat_object 104, 212, -4, 16, 104
+    add_bat_object 16, 160, 4, 16, 152
+    add_bat_object 12, 108, 4, 12, 216
+    # Coins
+    add_coin_object 8, 64
+    add_coin_object 76, 96
+    add_coin_object 12, 136
+    add_coin_object 220, 140
+.end_macro
+# Set data for level three.
+.macro start_level_three
     li PLAYER_X, 32
     li PLAYER_Y, 48
 
@@ -882,8 +932,11 @@
     level_one: bne $t0, 1, level_two
         start_level_one
         j done_select
-    level_two: bne $t0, 2, game_over
+    level_two: bne $t0, 2, level_three
         start_level_two
+        j done_select
+    level_three: bne $t0, 3, game_over
+        start_level_three
         j done_select
     game_over:
         display_game_over
@@ -957,7 +1010,7 @@ main:
     sw $t1, 16($t0)
     # Set to level one
     la $t0, current_level
-    li $t1, 2   # TODO - go back to 1
+    li $t1, 1
     sw $t1, 0($t0)
 
 select_level:
