@@ -20,13 +20,13 @@
 # D. Different levels [2]
 # H. Double jump [1]
 # 
-# TODO Link to video demonstration for final submission:
-# - (insert YouTube / MyMedia / other URL here). Make sure we can view it!
+# Link to video demonstration for final submission:
+# - https://drive.google.com/file/d/120oP5r_erm_RE8IPzmJmR5bK0_mf1PLQ/view?usp=sharing
 #
 # Are you OK with us sharing the video with people outside course staff?
 # - yes, and please share this project github link as well!
-# TODO: add github link
-# 
+# - https://github.com/wobertt/AssemblyProject
+#
 # Any additional information that the TA needs to know:
 # - Credits to Benjamin Chislett (first entry in Winter 2021 Notable Projects)
 #   for describing the "mark, draw, clear" animation order in his video.
