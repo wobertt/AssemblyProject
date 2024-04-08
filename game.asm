@@ -12,31 +12,31 @@
 # - Display height in pixels: 256
 # - Base Address for Display: 0x10008000 ($gp)
 #
-# Which milestoneshave been reached in this submission?
-# (See the assignment handout for descriptions of the milestones)
-# TODO - Milestone 1/2/3/4 (choose the one the applies)
+# Which milestones have been reached in this submission?
+# - Milestone 4
 #
-# Which approved features have been implemented for milestone 3?
-# TODO (See the assignment handout for the list of additional features)
-# 1. (fill in the feature, if any)
-# 2. (fill in the feature, if any)
-# 3. (fill in the feature, if any)
-# ... (add more if necessary)
-#
+# Which approved features have been implemented for milestone 4?
+# A. Moving objects [2]
+# D. Different levels [2]
+# H. Double jump [1]
+# 
 # TODO Link to video demonstration for final submission:
 # - (insert YouTube / MyMedia / other URL here). Make sure we can view it!
 #
 # Are you OK with us sharing the video with people outside course staff?
 # - yes, and please share this project github link as well!
 # TODO: add github link
+# 
 # Any additional information that the TA needs to know:
-# - (write here, if any)
-# TODO
+# - Credits to Benjamin Chislett (first entry in Winter 2021 Notable Projects)
+#   for describing the "mark, draw, clear" animation order in his video.
+#   My to_clear_stack, mark_pixel_for_clear, and related functions
+#   are due to his ideas.
+# 
 #####################################################################
 
 # --------------------- CONSTANTS --------------------- #
 .text
-    # Stored in pixel format (always a multiple of 4).
     .eqv PLAYER_X $s0
     .eqv PLAYER_Y $s1
 
@@ -104,8 +104,8 @@
     .eqv BAT_ENEMY_TYPE 4
     .eqv BAT_WIDTH 4
 
-    .eqv OBJ_SIZE 8         # struct size
-    .eqv OBJ_SIZE_POW 3     # log(size)
+    .eqv OBJ_SIZE 8         # sizeof(struct object)
+    .eqv OBJ_SIZE_POW 3     # log(OBJ_SIZE)
 
 
 # --------------------- DATA --------------------- #
@@ -245,6 +245,8 @@
     li $v0, 4
     syscall
 .end_macro
+
+### Misc macros
 
 # Store the current keypress in %s, if possible.
 # If no key was pressed, 0 is stored.
@@ -1001,6 +1003,8 @@
             syscall
 .end_macro
 
+# --------------------- MAIN CODE --------------------- #
+
 .globl main
 main:
 
@@ -1039,6 +1043,9 @@ main_loop:
     # Exit
     li $v0, 10
     syscall
+
+# --------------------- FUNCTIONS --------------------- #
+
 # Check if the player has 0 health.
 # If they do, display the game over screen, then go back to the beginning.
 check_level_fail:
