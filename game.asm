@@ -958,7 +958,6 @@
     # s1 = health remaining (determines # of yellow stars and message)
     la $s0, player_info
     lw $s1, 16($s0)
-    print_int $s1
     
     fail_screen: bgtz $s1, success_screen
         set_rect 44, 76, GAME_OVER_WIDTH, GAME_OVER_HEIGHT
