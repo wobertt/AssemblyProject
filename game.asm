@@ -32,7 +32,15 @@
 #   for describing the "mark, draw, clear" animation order in his video.
 #   My to_clear_stack, mark_pixel_for_clear, and related functions
 #   are due to his ideas.
-# 
+# - Controls:
+#       A - move left
+#       D - move right
+#       W - jump
+#       H - +1 health
+#       K - -1 health
+#       R - restart (press this to exit the game over screen)
+#       Q - quit
+#
 #####################################################################
 
 # --------------------- CONSTANTS --------------------- #
